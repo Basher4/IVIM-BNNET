@@ -1,0 +1,4 @@
+data/invivo_data/*
+data/signals/*
+__pycache__/
+*.py[cod]
