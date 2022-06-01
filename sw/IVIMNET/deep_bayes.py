@@ -79,6 +79,7 @@ class Net(nn.Module):
 
         X_stack = torch.cat([X] * self.bayes_samples)
         paramsSamples = [enc(X_stack).reshape((self.bayes_samples, X.shape[0], 1)) for enc in self.encoder]
+        del X_stack
         # params = torch.stack(paramsSamples, dim=0).mean(dim=1)
         params = paramsSamples
 
@@ -87,9 +88,12 @@ class Net(nn.Module):
         Dp = sigm(params[1], pb.Dp)
         f0 = sigm(params[3], pb.f0)
 
+        for t in params:
+            del t
+
         # loss function
         X = Fp * torch.exp(-self.bvalues * Dp) + f0 * torch.exp(-self.bvalues * Dt)
-        return X, Dt, Fp/(f0+Fp), Dp, f0+Fp
+        return X, Dt, (Fp/(f0+Fp)), Dp, (f0+Fp)
 
 
 def learn_IVIM(X_train, bvalues, arg, epochs=1000, net_params=net_params(), stats_out=False, bayes_samples=32):
@@ -149,13 +153,19 @@ def learn_IVIM(X_train, bvalues, arg, epochs=1000, net_params=net_params(), stat
             # put batch on GPU if pressent
             X_batch = X_batch.to(arg.train_pars.device)
             ## forward + backward + optimize - we are not predicting tri exponential data.
-            X_pred = torch.mean(net(X_batch)[0], dim=0)
+            X_pred, del1, del2, del3, del4 = net(X_batch)
+            del del1
+            del del2
+            del del3
+            del del4
+            X_pred = torch.mean(X_pred, dim=0)
             X_pred[torch.isnan(X_pred)] = 0         # removing nans and too high/low predictions to prevent overshooting
             X_pred[X_pred < 0] = 0
             X_pred[X_pred > 3] = 3
             # determine loss for batch; note that the loss is determined by the difference between
             # the predicted signal and the actual signal. The loss does not look at Dt, Dp or Fp.
             loss = criterion(X_pred, X_batch)
+            del X_pred	
             # updating network
             loss.backward()
             optimizer.step()
@@ -171,12 +181,18 @@ def learn_IVIM(X_train, bvalues, arg, epochs=1000, net_params=net_params(), stat
             # do prediction, only look at predicted IVIM signal
             # stack = torch.stack([net(X_batch)[0] for _ in range(bayes_samples)])
             # X_pred = torch.mean(stack, dim=0)
-            X_pred = torch.mean(net(X_batch)[0], dim=0)
+            X_pred, del1, del2, del3, del4 = net(X_batch)
+            del del1
+            del del2
+            del del3
+            del del4
+            X_pred = torch.mean(X_pred, dim=0)
             X_pred[torch.isnan(X_pred)] = 0 # removing nans and too high/low predictions to prevent overshooting
             X_pred[X_pred < 0] = 0
             X_pred[X_pred > 3] = 3
             # validation loss
             loss = criterion(X_pred, X_batch)
+            del X_pred
             running_loss_val += loss.item()
         # scale losses
         running_loss_train = running_loss_train / totalit
