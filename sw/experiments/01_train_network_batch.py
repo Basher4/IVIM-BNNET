@@ -12,6 +12,7 @@ import sys
 import json
 
 sys.path.append('./')
+sys.path.append('./sw/')
 
 from IVIMNET.hyperparams import hyperparams as hp_example_1
 import IVIMNET.simulations as sim
@@ -41,7 +42,7 @@ for i in range(REPS):
             IVIM_signal_noisy, D, f, Dp = pickle.load(fd)
 
         time_start = time.perf_counter()
-        net, epoch, final_val_loss = deep_bayes.learn_IVIM(IVIM_signal_noisy, bvalues, arg, stats_out=True, bayes_samples=BAYES_SAMPLES)
+        net, epoch, final_val_loss = deep_bayes.learn_IVIM(IVIM_signal_noisy, bvalues, arg, net_params=net_params, stats_out=True, bayes_samples=BAYES_SAMPLES)
         time_end = time.perf_counter()
 
         # Save the model and corresponding metadata if it's better than what exists.
