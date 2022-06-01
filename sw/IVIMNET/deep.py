@@ -335,7 +335,7 @@ class Net(nn.Module):
                 return X, Dt, Fp, Dp, torch.ones(len(Dt))
 
 
-def learn_IVIM(X_train, bvalues, arg, net=None, epochs=1000):
+def learn_IVIM(X_train, bvalues, arg, net=None, epochs=1000, stats_out=False):
     """
     This program builds a IVIM-NET network and trains it.
     :param X_train: 2D array of IVIM data we use for training. First axis are the voxels and second axis are the b-values
@@ -517,6 +517,9 @@ def learn_IVIM(X_train, bvalues, arg, net=None, epochs=1000):
     del inferloader
     if arg.train_pars.use_cuda:
         torch.cuda.empty_cache()
+
+    if stats_out:
+        return (net, epoch, best)
     return net
 
 
