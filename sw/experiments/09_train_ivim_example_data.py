@@ -28,7 +28,7 @@ BAYES_SAMPLES = 0
 
 ### folder patient data
 folder = './sw/data/example_data'
-model_path = './sw/models/bnn_e08_patient'
+model_path = './sw/models/bnn_e09_ivim_patient'
 
 ### load patient data
 print('Load patient data \n')
