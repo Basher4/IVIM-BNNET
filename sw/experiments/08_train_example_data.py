@@ -25,7 +25,7 @@ net_params = deep_bayes.net_params()
 testdata = False
 
 EPOCHS = 1000
-BAYES_SAMPLES = 256
+BAYES_SAMPLES = 64
 
 ### folder patient data
 folder = './sw/data/example_data'
