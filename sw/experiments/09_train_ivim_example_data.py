@@ -74,7 +74,7 @@ with open(f"{model_path}.json", "w") as fd:
         "bayes_training_samples": BAYES_SAMPLES,
         "num_bvalues": len(bvalues),
         "dorpout_p": 0.1,
-        "activation_fn": net_params.activation,
+        "activation_fn": "elu",
 
         "epochs": epochs,
         "final_val_loss": best_val_loss,
