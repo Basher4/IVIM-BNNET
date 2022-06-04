@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_Perceptron_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="\$unit_ShiftRegister_sv " />
+            <top_module name="glbl" />
+            <top_module name="tb_Perceptron" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="210.001 ns"></ZoomEndTime>
+      <Cursor1Time time="68.415 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="250"></NameColumnWidth>
+      <ValueColumnWidth column_width="61"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="3" />
+   <wvobject fp_name="/tb_Perceptron/clk_in" type="logic">
+      <obj_property name="ElementShortName">clk_in</obj_property>
+      <obj_property name="ObjectShortName">clk_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="group6057" type="group">
+      <obj_property name="label">Stuff</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_Perceptron/nn_des_out_r" type="other">
+         <obj_property name="ElementShortName">nn_des_out_r</obj_property>
+         <obj_property name="ObjectShortName">nn_des_out_r</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/nn_out_r" type="other">
+         <obj_property name="ElementShortName">nn_out_r</obj_property>
+         <obj_property name="ObjectShortName">nn_out_r</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/delta_r" type="other">
+         <obj_property name="ElementShortName">delta_r</obj_property>
+         <obj_property name="ObjectShortName">delta_r</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/clocks_until_dout_vld" type="array">
+         <obj_property name="ElementShortName">clocks_until_dout_vld[31:0]</obj_property>
+         <obj_property name="ObjectShortName">clocks_until_dout_vld[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider119">
+         <obj_property name="label">UUT</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/param_addr" type="array">
+         <obj_property name="ElementShortName">param_addr[16:0]</obj_property>
+         <obj_property name="ObjectShortName">param_addr[16:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/din" type="array">
+         <obj_property name="ElementShortName">din[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">din[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/din_vld" type="logic">
+         <obj_property name="ElementShortName">din_vld</obj_property>
+         <obj_property name="ObjectShortName">din_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/dout" type="array">
+         <obj_property name="ElementShortName">dout[15:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/dout_vld" type="logic">
+         <obj_property name="ElementShortName">dout_vld</obj_property>
+         <obj_property name="ObjectShortName">dout_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/i_pp_bypass_relu" type="logic">
+         <obj_property name="ElementShortName">i_pp_bypass_relu</obj_property>
+         <obj_property name="ObjectShortName">i_pp_bypass_relu</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/o_pp_bypass_relu" type="logic">
+         <obj_property name="ElementShortName">o_pp_bypass_relu</obj_property>
+         <obj_property name="ObjectShortName">o_pp_bypass_relu</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/i_pp_data_tag" type="logic">
+         <obj_property name="ElementShortName">i_pp_data_tag</obj_property>
+         <obj_property name="ObjectShortName">i_pp_data_tag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/o_pp_data_tag" type="logic">
+         <obj_property name="ElementShortName">o_pp_data_tag</obj_property>
+         <obj_property name="ObjectShortName">o_pp_data_tag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/weights" type="array">
+         <obj_property name="ElementShortName">weights[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">weights[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/adder_tree" type="array">
+         <obj_property name="ElementShortName">adder_tree[0:254][31:0]</obj_property>
+         <obj_property name="ObjectShortName">adder_tree[0:254][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_out" type="array">
+         <obj_property name="ElementShortName">rom_out[2063:0]</obj_property>
+         <obj_property name="ObjectShortName">rom_out[2063:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/out_w_bias" type="array">
+         <obj_property name="ElementShortName">out_w_bias[31:0]</obj_property>
+         <obj_property name="ObjectShortName">out_w_bias[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/dout" type="array">
+         <obj_property name="ElementShortName">dout[15:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="group3545" type="group">
+         <obj_property name="label">Bias Adder</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_Perceptron/UUT/adder_bias/CLK" type="logic">
+            <obj_property name="ElementShortName">CLK</obj_property>
+            <obj_property name="ObjectShortName">CLK</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/adder_bias/A" type="array">
+            <obj_property name="ElementShortName">A[31:0]</obj_property>
+            <obj_property name="ObjectShortName">A[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/adder_bias/B" type="array">
+            <obj_property name="ElementShortName">B[31:0]</obj_property>
+            <obj_property name="ObjectShortName">B[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/adder_bias/S" type="array">
+            <obj_property name="ElementShortName">S[31:0]</obj_property>
+            <obj_property name="ObjectShortName">S[31:0]</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group6093" type="group">
+      <obj_property name="label">Perceptron Memory</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/sleep" type="logic">
+         <obj_property name="ElementShortName">sleep</obj_property>
+         <obj_property name="ObjectShortName">sleep</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/clka" type="logic">
+         <obj_property name="ElementShortName">clka</obj_property>
+         <obj_property name="ObjectShortName">clka</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/rsta" type="logic">
+         <obj_property name="ElementShortName">rsta</obj_property>
+         <obj_property name="ObjectShortName">rsta</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/ena" type="logic">
+         <obj_property name="ElementShortName">ena</obj_property>
+         <obj_property name="ObjectShortName">ena</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/regcea" type="logic">
+         <obj_property name="ElementShortName">regcea</obj_property>
+         <obj_property name="ObjectShortName">regcea</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/addra" type="array">
+         <obj_property name="ElementShortName">addra[16:0]</obj_property>
+         <obj_property name="ObjectShortName">addra[16:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/injectsbiterra" type="logic">
+         <obj_property name="ElementShortName">injectsbiterra</obj_property>
+         <obj_property name="ObjectShortName">injectsbiterra</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/injectdbiterra" type="logic">
+         <obj_property name="ElementShortName">injectdbiterra</obj_property>
+         <obj_property name="ObjectShortName">injectdbiterra</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/douta" type="array">
+         <obj_property name="ElementShortName">douta[2063:0]</obj_property>
+         <obj_property name="ObjectShortName">douta[2063:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/sbiterra" type="logic">
+         <obj_property name="ElementShortName">sbiterra</obj_property>
+         <obj_property name="ObjectShortName">sbiterra</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/dbiterra" type="logic">
+         <obj_property name="ElementShortName">dbiterra</obj_property>
+         <obj_property name="ObjectShortName">dbiterra</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/MEMORY_SIZE" type="array">
+         <obj_property name="ElementShortName">MEMORY_SIZE[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEMORY_SIZE[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/MEMORY_PRIMITIVE" type="array">
+         <obj_property name="ElementShortName">MEMORY_PRIMITIVE[39:0]</obj_property>
+         <obj_property name="ObjectShortName">MEMORY_PRIMITIVE[39:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/ECC_MODE" type="array">
+         <obj_property name="ElementShortName">ECC_MODE[47:0]</obj_property>
+         <obj_property name="ObjectShortName">ECC_MODE[47:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/MEMORY_INIT_FILE" type="array">
+         <obj_property name="ElementShortName">MEMORY_INIT_FILE[167:0]</obj_property>
+         <obj_property name="ObjectShortName">MEMORY_INIT_FILE[167:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/MEMORY_INIT_PARAM" type="array">
+         <obj_property name="ElementShortName">MEMORY_INIT_PARAM[7:0]</obj_property>
+         <obj_property name="ObjectShortName">MEMORY_INIT_PARAM[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/USE_MEM_INIT" type="array">
+         <obj_property name="ElementShortName">USE_MEM_INIT[31:0]</obj_property>
+         <obj_property name="ObjectShortName">USE_MEM_INIT[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/USE_MEM_INIT_MMI" type="array">
+         <obj_property name="ElementShortName">USE_MEM_INIT_MMI[31:0]</obj_property>
+         <obj_property name="ObjectShortName">USE_MEM_INIT_MMI[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/WAKEUP_TIME" type="array">
+         <obj_property name="ElementShortName">WAKEUP_TIME[103:0]</obj_property>
+         <obj_property name="ObjectShortName">WAKEUP_TIME[103:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/AUTO_SLEEP_TIME" type="array">
+         <obj_property name="ElementShortName">AUTO_SLEEP_TIME[31:0]</obj_property>
+         <obj_property name="ObjectShortName">AUTO_SLEEP_TIME[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/MESSAGE_CONTROL" type="array">
+         <obj_property name="ElementShortName">MESSAGE_CONTROL[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MESSAGE_CONTROL[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/MEMORY_OPTIMIZATION" type="array">
+         <obj_property name="ElementShortName">MEMORY_OPTIMIZATION[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEMORY_OPTIMIZATION[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/CASCADE_HEIGHT" type="array">
+         <obj_property name="ElementShortName">CASCADE_HEIGHT[31:0]</obj_property>
+         <obj_property name="ObjectShortName">CASCADE_HEIGHT[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/SIM_ASSERT_CHK" type="array">
+         <obj_property name="ElementShortName">SIM_ASSERT_CHK[31:0]</obj_property>
+         <obj_property name="ObjectShortName">SIM_ASSERT_CHK[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/IGNORE_INIT_SYNTH" type="array">
+         <obj_property name="ElementShortName">IGNORE_INIT_SYNTH[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IGNORE_INIT_SYNTH[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/READ_DATA_WIDTH_A" type="array">
+         <obj_property name="ElementShortName">READ_DATA_WIDTH_A[31:0]</obj_property>
+         <obj_property name="ObjectShortName">READ_DATA_WIDTH_A[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/ADDR_WIDTH_A" type="array">
+         <obj_property name="ElementShortName">ADDR_WIDTH_A[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ADDR_WIDTH_A[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/READ_RESET_VALUE_A" type="array">
+         <obj_property name="ElementShortName">READ_RESET_VALUE_A[7:0]</obj_property>
+         <obj_property name="ObjectShortName">READ_RESET_VALUE_A[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/READ_LATENCY_A" type="array">
+         <obj_property name="ElementShortName">READ_LATENCY_A[31:0]</obj_property>
+         <obj_property name="ObjectShortName">READ_LATENCY_A[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/RST_MODE_A" type="array">
+         <obj_property name="ElementShortName">RST_MODE_A[31:0]</obj_property>
+         <obj_property name="ObjectShortName">RST_MODE_A[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/P_MEMORY_PRIMITIVE" type="array">
+         <obj_property name="ElementShortName">P_MEMORY_PRIMITIVE[31:0]</obj_property>
+         <obj_property name="ObjectShortName">P_MEMORY_PRIMITIVE[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/P_CLOCKING_MODE" type="array">
+         <obj_property name="ElementShortName">P_CLOCKING_MODE[31:0]</obj_property>
+         <obj_property name="ObjectShortName">P_CLOCKING_MODE[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/P_ECC_MODE" type="array">
+         <obj_property name="ElementShortName">P_ECC_MODE[31:0]</obj_property>
+         <obj_property name="ObjectShortName">P_ECC_MODE[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/P_WAKEUP_TIME" type="array">
+         <obj_property name="ElementShortName">P_WAKEUP_TIME[31:0]</obj_property>
+         <obj_property name="ObjectShortName">P_WAKEUP_TIME[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/P_MEMORY_OPTIMIZATION" type="array">
+         <obj_property name="ElementShortName">P_MEMORY_OPTIMIZATION[31:0]</obj_property>
+         <obj_property name="ObjectShortName">P_MEMORY_OPTIMIZATION[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

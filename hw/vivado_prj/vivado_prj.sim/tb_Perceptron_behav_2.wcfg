@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_Perceptron_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="\$unit_ShiftRegister_sv " />
+            <top_module name="glbl" />
+            <top_module name="tb_Perceptron" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="43.285 ns"></ZoomStartTime>
+      <ZoomEndTime time="243.343 ns"></ZoomEndTime>
+      <Cursor1Time time="210.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="169"></NameColumnWidth>
+      <ValueColumnWidth column_width="100"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="14" />
+   <wvobject fp_name="/tb_Perceptron/clk_in" type="logic">
+      <obj_property name="ElementShortName">clk_in</obj_property>
+      <obj_property name="ObjectShortName">clk_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Perceptron/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="group358" type="group">
+      <obj_property name="label">Ground Truth</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_Perceptron/test_din" type="array">
+         <obj_property name="ElementShortName">test_din[0:3][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">test_din[0:3][0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/test_dout" type="array">
+         <obj_property name="ElementShortName">test_dout[0:3][15:0]</obj_property>
+         <obj_property name="ObjectShortName">test_dout[0:3][15:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_Perceptron/UUT/din" type="array">
+      <obj_property name="ElementShortName">din[0:127][15:0]</obj_property>
+      <obj_property name="ObjectShortName">din[0:127][15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Perceptron/UUT/din_vld" type="logic">
+      <obj_property name="ElementShortName">din_vld</obj_property>
+      <obj_property name="ObjectShortName">din_vld</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Perceptron/UUT/dout_shifted" type="array">
+      <obj_property name="ElementShortName">dout_shifted[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dout_shifted[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">8</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Perceptron/UUT/dout" type="array">
+      <obj_property name="ElementShortName">dout[15:0]</obj_property>
+      <obj_property name="ObjectShortName">dout[15:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">4</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Perceptron/UUT/dout_vld" type="logic">
+      <obj_property name="ElementShortName">dout_vld</obj_property>
+      <obj_property name="ObjectShortName">dout_vld</obj_property>
+   </wvobject>
+   <wvobject fp_name="group2596" type="group">
+      <obj_property name="label">Data Tags</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_Perceptron/perc_din_vld" type="logic">
+         <obj_property name="ElementShortName">perc_din_vld</obj_property>
+         <obj_property name="ObjectShortName">perc_din_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/perc_dout_vld" type="logic">
+         <obj_property name="ElementShortName">perc_dout_vld</obj_property>
+         <obj_property name="ObjectShortName">perc_dout_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/i_bypass_relu" type="logic">
+         <obj_property name="ElementShortName">i_bypass_relu</obj_property>
+         <obj_property name="ObjectShortName">i_bypass_relu</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/o_bypass_relu" type="logic">
+         <obj_property name="ElementShortName">o_bypass_relu</obj_property>
+         <obj_property name="ObjectShortName">o_bypass_relu</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/i_data_tag" type="logic">
+         <obj_property name="ElementShortName">i_data_tag</obj_property>
+         <obj_property name="ObjectShortName">i_data_tag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/o_data_dat" type="logic">
+         <obj_property name="ElementShortName">o_data_dat</obj_property>
+         <obj_property name="ObjectShortName">o_data_dat</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group359" type="group">
+      <obj_property name="label">Perceptron ROM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/rsta" type="logic">
+         <obj_property name="ElementShortName">rsta</obj_property>
+         <obj_property name="ObjectShortName">rsta</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/ena" type="logic">
+         <obj_property name="ElementShortName">ena</obj_property>
+         <obj_property name="ObjectShortName">ena</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/addra" type="array">
+         <obj_property name="ElementShortName">addra[16:0]</obj_property>
+         <obj_property name="ObjectShortName">addra[16:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/rom_weights_bias/douta" type="array">
+         <obj_property name="ElementShortName">douta[2063:0]</obj_property>
+         <obj_property name="ObjectShortName">douta[2063:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group2547" type="group">
+      <obj_property name="label">Multipliers</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="group2548" type="group">
+         <obj_property name="label">Idx0</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_Perceptron/UUT/PARALLEL_MULTIPLIERS[0].genblk1.dotprod_mult/A" type="array">
+            <obj_property name="ElementShortName">A[15:0]</obj_property>
+            <obj_property name="ObjectShortName">A[15:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">4</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/PARALLEL_MULTIPLIERS[0].genblk1.dotprod_mult/B" type="array">
+            <obj_property name="ElementShortName">B[15:0]</obj_property>
+            <obj_property name="ObjectShortName">B[15:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">4</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/PARALLEL_MULTIPLIERS[0].genblk1.dotprod_mult/P" type="array">
+            <obj_property name="ElementShortName">P[31:0]</obj_property>
+            <obj_property name="ObjectShortName">P[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group2549" type="group">
+         <obj_property name="label">Idx1</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">4</obj_property>
+         <obj_property name="radix_otherWidth">0</obj_property>
+         <wvobject fp_name="/tb_Perceptron/UUT/PARALLEL_MULTIPLIERS[1].genblk1.dotprod_mult/A" type="array">
+            <obj_property name="ElementShortName">A[15:0]</obj_property>
+            <obj_property name="ObjectShortName">A[15:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">4</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/PARALLEL_MULTIPLIERS[1].genblk1.dotprod_mult/B" type="array">
+            <obj_property name="ElementShortName">B[15:0]</obj_property>
+            <obj_property name="ObjectShortName">B[15:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">4</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/PARALLEL_MULTIPLIERS[1].genblk1.dotprod_mult/P" type="array">
+            <obj_property name="ElementShortName">P[31:0]</obj_property>
+            <obj_property name="ObjectShortName">P[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group2550" type="group">
+         <obj_property name="label">Idx2</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">4</obj_property>
+         <obj_property name="radix_otherWidth">0</obj_property>
+         <wvobject fp_name="/tb_Perceptron/UUT/PARALLEL_MULTIPLIERS[2].genblk1.dotprod_mult/A" type="array">
+            <obj_property name="ElementShortName">A[15:0]</obj_property>
+            <obj_property name="ObjectShortName">A[15:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">4</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/PARALLEL_MULTIPLIERS[2].genblk1.dotprod_mult/B" type="array">
+            <obj_property name="ElementShortName">B[15:0]</obj_property>
+            <obj_property name="ObjectShortName">B[15:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">4</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/PARALLEL_MULTIPLIERS[2].genblk1.dotprod_mult/P" type="array">
+            <obj_property name="ElementShortName">P[31:0]</obj_property>
+            <obj_property name="ObjectShortName">P[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group2551" type="group">
+         <obj_property name="label">Idx3</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">4</obj_property>
+         <obj_property name="radix_otherWidth">0</obj_property>
+         <wvobject fp_name="/tb_Perceptron/UUT/PARALLEL_MULTIPLIERS[3].genblk1.dotprod_mult/A" type="array">
+            <obj_property name="ElementShortName">A[15:0]</obj_property>
+            <obj_property name="ObjectShortName">A[15:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">4</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/PARALLEL_MULTIPLIERS[3].genblk1.dotprod_mult/B" type="array">
+            <obj_property name="ElementShortName">B[15:0]</obj_property>
+            <obj_property name="ObjectShortName">B[15:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">4</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/PARALLEL_MULTIPLIERS[3].genblk1.dotprod_mult/P" type="array">
+            <obj_property name="ElementShortName">P[31:0]</obj_property>
+            <obj_property name="ObjectShortName">P[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group2589" type="group">
+      <obj_property name="label">Adders</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="group2556" type="group">
+         <obj_property name="label">Adder Lvl 6</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[6].ADDER_TREE_LEVEL_ELEMENTS[63].adder_intermediate/A" type="array">
+            <obj_property name="ElementShortName">A[31:0]</obj_property>
+            <obj_property name="ObjectShortName">A[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[6].ADDER_TREE_LEVEL_ELEMENTS[63].adder_intermediate/B" type="array">
+            <obj_property name="ElementShortName">B[31:0]</obj_property>
+            <obj_property name="ObjectShortName">B[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[6].ADDER_TREE_LEVEL_ELEMENTS[63].adder_intermediate/S" type="array">
+            <obj_property name="ElementShortName">S[31:0]</obj_property>
+            <obj_property name="ObjectShortName">S[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group2564" type="group">
+         <obj_property name="label">Adder Lvl 5</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">8</obj_property>
+         <obj_property name="radix_otherWidth">0</obj_property>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[5].ADDER_TREE_LEVEL_ELEMENTS[31].adder_intermediate/A" type="array">
+            <obj_property name="ElementShortName">A[31:0]</obj_property>
+            <obj_property name="ObjectShortName">A[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[5].ADDER_TREE_LEVEL_ELEMENTS[31].adder_intermediate/B" type="array">
+            <obj_property name="ElementShortName">B[31:0]</obj_property>
+            <obj_property name="ObjectShortName">B[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[5].ADDER_TREE_LEVEL_ELEMENTS[31].adder_intermediate/S" type="array">
+            <obj_property name="ElementShortName">S[31:0]</obj_property>
+            <obj_property name="ObjectShortName">S[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group2568" type="group">
+         <obj_property name="label">Adder Lvl 4</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">8</obj_property>
+         <obj_property name="radix_otherWidth">0</obj_property>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[4].ADDER_TREE_LEVEL_ELEMENTS[13].adder_intermediate/A" type="array">
+            <obj_property name="ElementShortName">A[31:0]</obj_property>
+            <obj_property name="ObjectShortName">A[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[4].ADDER_TREE_LEVEL_ELEMENTS[13].adder_intermediate/B" type="array">
+            <obj_property name="ElementShortName">B[31:0]</obj_property>
+            <obj_property name="ObjectShortName">B[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[4].ADDER_TREE_LEVEL_ELEMENTS[13].adder_intermediate/S" type="array">
+            <obj_property name="ElementShortName">S[31:0]</obj_property>
+            <obj_property name="ObjectShortName">S[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group2572" type="group">
+         <obj_property name="label">Adder Lvl 3</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">8</obj_property>
+         <obj_property name="radix_otherWidth">0</obj_property>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[3].ADDER_TREE_LEVEL_ELEMENTS[7].adder_intermediate/A" type="array">
+            <obj_property name="ElementShortName">A[31:0]</obj_property>
+            <obj_property name="ObjectShortName">A[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[3].ADDER_TREE_LEVEL_ELEMENTS[7].adder_intermediate/B" type="array">
+            <obj_property name="ElementShortName">B[31:0]</obj_property>
+            <obj_property name="ObjectShortName">B[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[3].ADDER_TREE_LEVEL_ELEMENTS[7].adder_intermediate/S" type="array">
+            <obj_property name="ElementShortName">S[31:0]</obj_property>
+            <obj_property name="ObjectShortName">S[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group2576" type="group">
+         <obj_property name="label">Adder Lvl 2</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">8</obj_property>
+         <obj_property name="radix_otherWidth">0</obj_property>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[2].ADDER_TREE_LEVEL_ELEMENTS[3].adder_intermediate/A" type="array">
+            <obj_property name="ElementShortName">A[31:0]</obj_property>
+            <obj_property name="ObjectShortName">A[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[2].ADDER_TREE_LEVEL_ELEMENTS[3].adder_intermediate/B" type="array">
+            <obj_property name="ElementShortName">B[31:0]</obj_property>
+            <obj_property name="ObjectShortName">B[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[2].ADDER_TREE_LEVEL_ELEMENTS[3].adder_intermediate/S" type="array">
+            <obj_property name="ElementShortName">S[31:0]</obj_property>
+            <obj_property name="ObjectShortName">S[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group2580" type="group">
+         <obj_property name="label">Adder Lvl 1</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">8</obj_property>
+         <obj_property name="radix_otherWidth">0</obj_property>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[1].ADDER_TREE_LEVEL_ELEMENTS[1].adder_intermediate/A" type="array">
+            <obj_property name="ElementShortName">A[31:0]</obj_property>
+            <obj_property name="ObjectShortName">A[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[1].ADDER_TREE_LEVEL_ELEMENTS[1].adder_intermediate/B" type="array">
+            <obj_property name="ElementShortName">B[31:0]</obj_property>
+            <obj_property name="ObjectShortName">B[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[1].ADDER_TREE_LEVEL_ELEMENTS[1].adder_intermediate/S" type="array">
+            <obj_property name="ElementShortName">S[31:0]</obj_property>
+            <obj_property name="ObjectShortName">S[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group2584" type="group">
+         <obj_property name="label">Adder Lvl 0</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">8</obj_property>
+         <obj_property name="radix_otherWidth">0</obj_property>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[0].ADDER_TREE_LEVEL_ELEMENTS[0].adder_intermediate/A" type="array">
+            <obj_property name="ElementShortName">A[31:0]</obj_property>
+            <obj_property name="ObjectShortName">A[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[0].ADDER_TREE_LEVEL_ELEMENTS[0].adder_intermediate/B" type="array">
+            <obj_property name="ElementShortName">B[31:0]</obj_property>
+            <obj_property name="ObjectShortName">B[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/ADDER_TREE_LEVEL[0].ADDER_TREE_LEVEL_ELEMENTS[0].adder_intermediate/S" type="array">
+            <obj_property name="ElementShortName">S[31:0]</obj_property>
+            <obj_property name="ObjectShortName">S[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group2588" type="group">
+         <obj_property name="label">Adder Bias</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <obj_property name="Radix">REALRADIX</obj_property>
+         <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+         <obj_property name="radix_fractionWidth">8</obj_property>
+         <obj_property name="radix_otherWidth">0</obj_property>
+         <wvobject fp_name="/tb_Perceptron/UUT/adder_bias/A" type="array">
+            <obj_property name="ElementShortName">A[31:0]</obj_property>
+            <obj_property name="ObjectShortName">A[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/adder_bias/B" type="array">
+            <obj_property name="ElementShortName">B[31:0]</obj_property>
+            <obj_property name="ObjectShortName">B[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Perceptron/UUT/adder_bias/S" type="array">
+            <obj_property name="ElementShortName">S[31:0]</obj_property>
+            <obj_property name="ObjectShortName">S[31:0]</obj_property>
+            <obj_property name="Radix">REALRADIX</obj_property>
+            <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+            <obj_property name="radix_fractionWidth">8</obj_property>
+            <obj_property name="radix_otherWidth">0</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group2607" type="group">
+      <obj_property name="label">Dout Vld SHR</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_Perceptron/UUT/u_ShrDoutVld/din" type="array">
+         <obj_property name="ElementShortName">din[0:0]</obj_property>
+         <obj_property name="ObjectShortName">din[0:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/u_ShrDoutVld/dout" type="array">
+         <obj_property name="ElementShortName">dout[0:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[0:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/u_ShrDoutVld/shr" type="array">
+         <obj_property name="ElementShortName">shr[0:19][0:0]</obj_property>
+         <obj_property name="ObjectShortName">shr[0:19][0:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group2611" type="group">
+      <obj_property name="label">Bias SHR</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_Perceptron/UUT/u_ShrBias/shr" type="array">
+         <obj_property name="ElementShortName">shr[0:16][15:0]</obj_property>
+         <obj_property name="ObjectShortName">shr[0:16][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/u_ShrBias/din" type="array">
+         <obj_property name="ElementShortName">din[15:0]</obj_property>
+         <obj_property name="ObjectShortName">din[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Perceptron/UUT/u_ShrBias/dout" type="array">
+         <obj_property name="ElementShortName">dout[15:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[15:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

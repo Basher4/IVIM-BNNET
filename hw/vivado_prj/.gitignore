@@ -1,0 +1,8 @@
+**.pyc
+
+vivado_prj.cache/
+vivado_prj.gen/
+vivado_prj.ip_user_files/
+vivado_prj.runs/
+vivado_prj.sim/sim_1/
+vivado_prj.hw/

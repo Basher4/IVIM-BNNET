@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_PEProcessingUnit_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="\$unit_BernoulliSampler_sv " />
+            <top_module name="glbl" />
+            <top_module name="tb_PEProcessingUnit" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="260.001 ns"></ZoomEndTime>
+      <Cursor1Time time="86.825 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="169"></NameColumnWidth>
+      <ValueColumnWidth column_width="88"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="14" />
+   <wvobject fp_name="/tb_PEProcessingUnit/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_PEProcessingUnit/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_PEProcessingUnit/test_din" type="array">
+      <obj_property name="ElementShortName">test_din[0:3][0:127][15:0]</obj_property>
+      <obj_property name="ObjectShortName">test_din[0:3][0:127][15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_PEProcessingUnit/test_dout" type="array">
+      <obj_property name="ElementShortName">test_dout[0:3][15:0]</obj_property>
+      <obj_property name="ObjectShortName">test_dout[0:3][15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_PEProcessingUnit/cycles_before_first_valid" type="array">
+      <obj_property name="ElementShortName">cycles_before_first_valid[31:0]</obj_property>
+      <obj_property name="ObjectShortName">cycles_before_first_valid[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_PEProcessingUnit/bs_o_dropout_mask" type="array">
+      <obj_property name="ElementShortName">bs_o_dropout_mask[127:0]</obj_property>
+      <obj_property name="ObjectShortName">bs_o_dropout_mask[127:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_PEProcessingUnit/pl_o_data_tag" type="logic">
+      <obj_property name="ElementShortName">pl_o_data_tag</obj_property>
+      <obj_property name="ObjectShortName">pl_o_data_tag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_PEProcessingUnit/pl_o_data" type="array">
+      <obj_property name="ElementShortName">pl_o_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">pl_o_data[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_PEProcessingUnit/pl_o_data_vld" type="logic">
+      <obj_property name="ElementShortName">pl_o_data_vld</obj_property>
+      <obj_property name="ObjectShortName">pl_o_data_vld</obj_property>
+   </wvobject>
+   <wvobject fp_name="group366" type="group">
+      <obj_property name="label">Ws &amp; Bs Pipeline</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="divider" fp_name="divider369">
+         <obj_property name="label">TestBench</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/pl_i_param_idx" type="array">
+         <obj_property name="ElementShortName">pl_i_param_idx[16:0]</obj_property>
+         <obj_property name="ObjectShortName">pl_i_param_idx[16:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider503">
+         <obj_property name="label">Processing Lane</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/param_addr" type="array">
+         <obj_property name="ElementShortName">param_addr[16:0]</obj_property>
+         <obj_property name="ObjectShortName">param_addr[16:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider369">
+         <obj_property name="label">Perceptron</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/param_addr" type="array">
+         <obj_property name="ElementShortName">param_addr[16:0]</obj_property>
+         <obj_property name="ObjectShortName">param_addr[16:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/weights" type="array">
+         <obj_property name="ElementShortName">weights[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">weights[0:127][15:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group373" type="group">
+      <obj_property name="label">Input Data Pipeline</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_PEProcessingUnit/pl_i_data" type="array">
+         <obj_property name="ElementShortName">pl_i_data[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">pl_i_data[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/pl_i_data_vld" type="logic">
+         <obj_property name="ElementShortName">pl_i_data_vld</obj_property>
+         <obj_property name="ObjectShortName">pl_i_data_vld</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider374">
+         <obj_property name="label">Dropout</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_DropoutLayer/din" type="array">
+         <obj_property name="ElementShortName">din[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">din[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_DropoutLayer/dout_vld" type="logic">
+         <obj_property name="ElementShortName">dout_vld</obj_property>
+         <obj_property name="ObjectShortName">dout_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_DropoutLayer/mask" type="array">
+         <obj_property name="ElementShortName">mask[127:0]</obj_property>
+         <obj_property name="ObjectShortName">mask[127:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_DropoutLayer/dout" type="array">
+         <obj_property name="ElementShortName">dout[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_DropoutLayer/dout_vld" type="logic">
+         <obj_property name="ElementShortName">dout_vld</obj_property>
+         <obj_property name="ObjectShortName">dout_vld</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider376">
+         <obj_property name="label">Perceptron</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/din" type="array">
+         <obj_property name="ElementShortName">din[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">din[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/din_vld" type="logic">
+         <obj_property name="ElementShortName">din_vld</obj_property>
+         <obj_property name="ObjectShortName">din_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/dout_vld" type="logic">
+         <obj_property name="ElementShortName">dout_vld</obj_property>
+         <obj_property name="ObjectShortName">dout_vld</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider992">
+         <obj_property name="label">ReLU</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/din" type="array">
+         <obj_property name="ElementShortName">din[15:0]</obj_property>
+         <obj_property name="ObjectShortName">din[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/din_vld" type="logic">
+         <obj_property name="ElementShortName">din_vld</obj_property>
+         <obj_property name="ObjectShortName">din_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/dout" type="array">
+         <obj_property name="ElementShortName">dout[15:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/dout_vld" type="logic">
+         <obj_property name="ElementShortName">dout_vld</obj_property>
+         <obj_property name="ObjectShortName">dout_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/i_pp_data_tag" type="logic">
+         <obj_property name="ElementShortName">i_pp_data_tag</obj_property>
+         <obj_property name="ObjectShortName">i_pp_data_tag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/o_pp_data_tag" type="logic">
+         <obj_property name="ElementShortName">o_pp_data_tag</obj_property>
+         <obj_property name="ObjectShortName">o_pp_data_tag</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group405" type="group">
+      <obj_property name="label">Perceptron Signals</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/rst" type="logic">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/param_addr" type="array">
+         <obj_property name="ElementShortName">param_addr[16:0]</obj_property>
+         <obj_property name="ObjectShortName">param_addr[16:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/din" type="array">
+         <obj_property name="ElementShortName">din[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">din[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/din_vld" type="logic">
+         <obj_property name="ElementShortName">din_vld</obj_property>
+         <obj_property name="ObjectShortName">din_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/dout" type="array">
+         <obj_property name="ElementShortName">dout[15:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/dout_vld" type="logic">
+         <obj_property name="ElementShortName">dout_vld</obj_property>
+         <obj_property name="ObjectShortName">dout_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/i_pp_bypass_relu" type="logic">
+         <obj_property name="ElementShortName">i_pp_bypass_relu</obj_property>
+         <obj_property name="ObjectShortName">i_pp_bypass_relu</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/o_pp_bypass_relu" type="logic">
+         <obj_property name="ElementShortName">o_pp_bypass_relu</obj_property>
+         <obj_property name="ObjectShortName">o_pp_bypass_relu</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/i_pp_data_tag" type="logic">
+         <obj_property name="ElementShortName">i_pp_data_tag</obj_property>
+         <obj_property name="ObjectShortName">i_pp_data_tag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/o_pp_data_tag" type="logic">
+         <obj_property name="ElementShortName">o_pp_data_tag</obj_property>
+         <obj_property name="ObjectShortName">o_pp_data_tag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/weights" type="array">
+         <obj_property name="ElementShortName">weights[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">weights[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/bias_latency_adjusted" type="array">
+         <obj_property name="ElementShortName">bias_latency_adjusted[15:0]</obj_property>
+         <obj_property name="ObjectShortName">bias_latency_adjusted[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/bias_rom" type="array">
+         <obj_property name="ElementShortName">bias_rom[15:0]</obj_property>
+         <obj_property name="ObjectShortName">bias_rom[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/adder_tree" type="array">
+         <obj_property name="ElementShortName">adder_tree[0:254][31:0]</obj_property>
+         <obj_property name="ObjectShortName">adder_tree[0:254][31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/rom_out" type="array">
+         <obj_property name="ElementShortName">rom_out[2063:0]</obj_property>
+         <obj_property name="ObjectShortName">rom_out[2063:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/out_w_bias" type="array">
+         <obj_property name="ElementShortName">out_w_bias[31:0]</obj_property>
+         <obj_property name="ObjectShortName">out_w_bias[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/bias_expanded" type="array">
+         <obj_property name="ElementShortName">bias_expanded[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bias_expanded[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="group480" type="group">
+         <obj_property name="label">Bias Adder</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/adder_bias/A" type="array">
+            <obj_property name="ElementShortName">A[31:0]</obj_property>
+            <obj_property name="ObjectShortName">A[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/adder_bias/B" type="array">
+            <obj_property name="ElementShortName">B[31:0]</obj_property>
+            <obj_property name="ObjectShortName">B[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/adder_bias/S" type="array">
+            <obj_property name="ElementShortName">S[31:0]</obj_property>
+            <obj_property name="ObjectShortName">S[31:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group484" type="group">
+         <obj_property name="label">SHR Bias</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/u_ShrBias/din" type="array">
+            <obj_property name="ElementShortName">din[15:0]</obj_property>
+            <obj_property name="ObjectShortName">din[15:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/u_ShrBias/dout" type="array">
+            <obj_property name="ElementShortName">dout[15:0]</obj_property>
+            <obj_property name="ObjectShortName">dout[15:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/u_ShrBias/shr" type="array">
+            <obj_property name="ElementShortName">shr[0:16][15:0]</obj_property>
+            <obj_property name="ObjectShortName">shr[0:16][15:0]</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group510" type="group">
+      <obj_property name="label">ReLU</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/din" type="array">
+         <obj_property name="ElementShortName">din[15:0]</obj_property>
+         <obj_property name="ObjectShortName">din[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/din_vld" type="logic">
+         <obj_property name="ElementShortName">din_vld</obj_property>
+         <obj_property name="ObjectShortName">din_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/dout" type="array">
+         <obj_property name="ElementShortName">dout[15:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/dout_vld" type="logic">
+         <obj_property name="ElementShortName">dout_vld</obj_property>
+         <obj_property name="ObjectShortName">dout_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/i_pp_data_tag" type="logic">
+         <obj_property name="ElementShortName">i_pp_data_tag</obj_property>
+         <obj_property name="ObjectShortName">i_pp_data_tag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/o_pp_data_tag" type="logic">
+         <obj_property name="ElementShortName">o_pp_data_tag</obj_property>
+         <obj_property name="ObjectShortName">o_pp_data_tag</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group373" type="group">
+      <obj_property name="label">Input Data &amp; Weights</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_PEProcessingUnit/pl_i_data" type="array">
+         <obj_property name="ElementShortName">pl_i_data[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">pl_i_data[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/pl_i_data_vld" type="logic">
+         <obj_property name="ElementShortName">pl_i_data_vld</obj_property>
+         <obj_property name="ObjectShortName">pl_i_data_vld</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider374">
+         <obj_property name="label">Dropout</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_DropoutLayer/din" type="array">
+         <obj_property name="ElementShortName">din[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">din[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_DropoutLayer/dout_vld" type="logic">
+         <obj_property name="ElementShortName">dout_vld</obj_property>
+         <obj_property name="ObjectShortName">dout_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_DropoutLayer/mask" type="array">
+         <obj_property name="ElementShortName">mask[127:0]</obj_property>
+         <obj_property name="ObjectShortName">mask[127:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_DropoutLayer/dout" type="array">
+         <obj_property name="ElementShortName">dout[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_DropoutLayer/dout_vld" type="logic">
+         <obj_property name="ElementShortName">dout_vld</obj_property>
+         <obj_property name="ObjectShortName">dout_vld</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider376">
+         <obj_property name="label">Perceptron</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/din" type="array">
+         <obj_property name="ElementShortName">din[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">din[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/din_vld" type="logic">
+         <obj_property name="ElementShortName">din_vld</obj_property>
+         <obj_property name="ObjectShortName">din_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/param_addr" type="array">
+         <obj_property name="ElementShortName">param_addr[16:0]</obj_property>
+         <obj_property name="ObjectShortName">param_addr[16:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/weights" type="array">
+         <obj_property name="ElementShortName">weights[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">weights[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Perceptron/dout_vld" type="logic">
+         <obj_property name="ElementShortName">dout_vld</obj_property>
+         <obj_property name="ObjectShortName">dout_vld</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider992">
+         <obj_property name="label">ReLU</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/din" type="array">
+         <obj_property name="ElementShortName">din[15:0]</obj_property>
+         <obj_property name="ObjectShortName">din[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/din_vld" type="logic">
+         <obj_property name="ElementShortName">din_vld</obj_property>
+         <obj_property name="ObjectShortName">din_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/dout" type="array">
+         <obj_property name="ElementShortName">dout[15:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/dout_vld" type="logic">
+         <obj_property name="ElementShortName">dout_vld</obj_property>
+         <obj_property name="ObjectShortName">dout_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/i_pp_data_tag" type="logic">
+         <obj_property name="ElementShortName">i_pp_data_tag</obj_property>
+         <obj_property name="ObjectShortName">i_pp_data_tag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEProcessingUnit/u_ProcessingLane/u_Relu/o_pp_data_tag" type="logic">
+         <obj_property name="ElementShortName">o_pp_data_tag</obj_property>
+         <obj_property name="ObjectShortName">o_pp_data_tag</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

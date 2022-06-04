@@ -1,0 +1,6 @@
+[verilog]
+include_paths = ["includes"]
+defines = []
+
+[option]
+linter = true
