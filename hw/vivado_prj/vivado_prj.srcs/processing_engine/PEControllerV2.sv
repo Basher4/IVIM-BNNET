@@ -16,19 +16,19 @@ module PEControllerV2 #(string PERC_PARAM_FILES [PARALLELISM]) (
     logic         ioc_o_done;
     
     logic         ilc_i_we;
-    bit [  7 : 0] ilc_i_addra;
+    bit [  7 : 0] ilc_i_wr_addr;
     bit [511 : 0] ilc_i_dina_flat;
-    bit [  7 : 0] ilc_i_addrb;
+    bit [  7 : 0] ilc_i_rd_addr;
     bit [2047: 0] ilc_o_doutb_flat;
     // Convenience features to transpose flattened wires into arrays.
-    nndata        ilc_i_data_in  [PARALLELISM];
-    nndata        ilc_o_data_out [INPUT_DIM];
-    assign {>>{ilc_i_dina_flat}} = ilc_i_data_in;
-    assign {>>{ilc_i_data_out}} = ilc_o_doutb_flat;
+    nndata        ilc_i_data [PARALLELISM];
+    nndata        ilc_o_data [INPUT_DIM];
+    assign {>>{ilc_i_dina_flat}} = ilc_i_data;
+    assign {>>{ilc_o_data}} = ilc_o_doutb_flat;
     
     logic         bs_i_read_next_sample;
-    bit [127 : 0] bs_o_drkopout_mask;
-    logic         bs_o_drkopout_mask_vld;
+    bit [127 : 0] bs_o_dropout_mask;
+    logic         bs_o_dropout_mask_vld;
     logic         bs_o_ctrl_is_full;
     logic         bs_o_ctrl_is_empty;
     
@@ -65,8 +65,16 @@ module PEControllerV2 #(string PERC_PARAM_FILES [PARALLELISM]) (
         .i_output_data_we(ioc_i_write_output)
     );
     
-    // Intermediate layer cache.
+    // Intermediate layer cache. Make it behave like a FIFO on writes.
+    // FIFO did not allow me to have the necessary ratio for wire width :/
     assign ilc_i_we = (pl_o_data_tag == DT_TO_IL_CACHE) && pl_o_data_vld_all;
+    always @(posedge clk or posedge rst) begin
+        if (rst)
+            ilc_i_wr_addr <= 0;
+        else
+            ilc_i_wr_addr <= ilc_i_we ? ilc_i_wr_addr + 1 : ilc_i_wr_addr;
+    end
+
     bram_ilcache_64d u_IntermediateLayerCache (
         .clka(clk),    // input wire clka
         .ena(1),      // input wire ena
@@ -75,7 +83,7 @@ module PEControllerV2 #(string PERC_PARAM_FILES [PARALLELISM]) (
         .dina(ilc_i_dina_flat),    // input wire [511 : 0] dina
         .clkb(clk),    // input wire clkb
         .enb(1),      // input wire enb
-        .addrb(ilc_i_addrb),  // input wire [5 : 0] addrb
+        .addrb(ilc_i_rd_addr),  // input wire [5 : 0] addrb
         .doutb(ilc_o_doutb_flat)  // output wire [2047 : 0] doutb
     );
     
@@ -118,44 +126,40 @@ module PEControllerV2 #(string PERC_PARAM_FILES [PARALLELISM]) (
     /// -------------------------------------------------------------------------
     ///      Controlling state machine.
     /// -------------------------------------------------------------------------
+    bit [7:0] sample_iteration;
     bit [4:0] eval_iteration;
 
-    enum logic [64:0] { S_INIT,
-                        S_NET_EVAL_START,
-                        S_FIRST_LAYER_EVAL,
-                        S_FIRST_LAYER_AWAIT_DONE,
-                        S_FIRST_LAYER_WAIT_FOR_DONE,
-                        S_SECOND_LAYER_EVAL,
-                        S_THIRD_LAYER_START,
-                        S_THIRD_LAYER_WAIT_FOR_DONE,
-                        S_NEXT_VOXEL,
-                        S_DONE,
-                        S_ERROR } state;
+    enum logic [63:0] { S_INIT = 64'd0,
+                        S_NET_EVAL_START = 64'd1,
+                        S_FIRST_LAYER_EVAL = 64'd2,
+                        S_FIRST_LAYER_AWAIT_DONE = 64'd3,
+                        S_FIRST_LAYER_WAIT_FOR_DONE = 64'd4,
+                        S_SECOND_LAYER_EVAL = 64'd5,
+                        S_THIRD_LAYER_START = 64'd6,
+                        S_THIRD_LAYER_WAIT_FOR_DONE = 64'd7,
+                        S_NEXT_VOXEL = 64'd8,
+                        S_DONE = 64'd9,
+                        S_ERROR = ~64'd0 } state;
                        
     always @(posedge clk or posedge rst) begin
-        if (rst)
+        if (rst) begin
             state <= S_INIT;
-        else case (state)
+        end else begin case (state)
             S_INIT: begin
                 // Put all signals to their default state.
                 // IO Coordinator
                 ioc_i_load_next_input <= 0;
-                ioc_i_write_output <= 0;
-                {<<{ioc_i_output_data}} <= 0;
                 // Intermediate Layer Cache.
-                ilc_i_we <= 0;
-                ilc_i_addra <= 0;
-                ilc_i_dina_flat <= 0;
-                ilc_i_addrb <= 0;
+                ilc_i_wr_addr <= 0;
+                ilc_i_rd_addr <= 0;
                 // Bernoulli Sampler.
                 bs_i_read_next_sample <= 0;
                 // Processing lanes.
                 pl_i_bypass_dropout <= 0;
                 pl_i_bypass_relu <= 0;
                 pl_i_param_idx <= 0;
-                pl_i_data <= 0;
-                {>>{pl_i_data}} <= 0;
                 // TODO: Internal variables.
+                sample_iteration <= 0;
                 eval_iteration <= 0;
 
                 // Start evaluating the model.
@@ -174,7 +178,7 @@ module PEControllerV2 #(string PERC_PARAM_FILES [PARALLELISM]) (
                 pl_i_data <= ioc_o_input_data;
                 pl_i_data_vld <= 1;
 
-                eval_iteration <= 2'b10;  // Optimisation for the next state - it will start with 2nd iteration value.
+                eval_iteration <= 2'b11;  // Optimisation for the next state - it will start with 2nd iteration value.
                 state <= S_FIRST_LAYER_EVAL;
             end
 
@@ -190,7 +194,7 @@ module PEControllerV2 #(string PERC_PARAM_FILES [PARALLELISM]) (
             end
 
             S_FIRST_LAYER_AWAIT_DONE: begin
-                eval_iteration <= 2'b10;    // Optimisation for the next state - it will start with 2nd iteration value.
+                eval_iteration <= 2'b11;    // Optimisation for the next state - it will start with 2nd iteration value.
 
                 if (pl_o_data_vld_all) begin
                     state <= S_FIRST_LAYER_WAIT_FOR_DONE;
@@ -200,16 +204,20 @@ module PEControllerV2 #(string PERC_PARAM_FILES [PARALLELISM]) (
             end
 
             S_FIRST_LAYER_WAIT_FOR_DONE: begin
-                assert (pl_o_data_vld_all == 1) else $error("STATE MACHINE ERROR - Waiting too long for first layer to finish")';
+                assert (pl_o_data_vld_all == 1) else $error("STATE MACHINE ERROR - Waiting too long for first layer to finish");
                 eval_iteration <= { eval_iteration[3:0], 1'b1 };
 
                 if (eval_iteration[4]) begin
                     // In the next state we will start evaluating the 2nd layer.
                     // We will need a dropout mask.
                     bs_i_read_next_sample <= 1;
-
+                    // Setup processing lanes.
                     pl_i_bypass_dropout <= 0;
-                    pl_
+                    pl_i_bypass_relu <= 0;
+                    // pl_i_param_idx <= pl_i_param_idx -- it was updated in state S_FIRST_LAYER_EVAL.
+                    pl_i_data = ilc_o_data;
+                    pl_i_data_tag <= DT_TO_IL_CACHE;
+                    
                     state <= S_SECOND_LAYER_EVAL;
                 end else begin
                     state <= S_FIRST_LAYER_WAIT_FOR_DONE;
@@ -222,6 +230,7 @@ module PEControllerV2 #(string PERC_PARAM_FILES [PARALLELISM]) (
 
             default: state <= S_INIT;
         endcase
+        end
     end
 
 endmodule

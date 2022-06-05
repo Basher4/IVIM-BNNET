@@ -7,4 +7,29 @@ module tb_PEControllerV2;
     logic rst = 1;
     always #5 clk = ~clk;
 
+    localparam string PERC_PARAM_FILES [PARALLELISM] = {
+        "perc_weights_bias.mem", "perc_weights_bias.mem", "perc_weights_bias.mem", "perc_weights_bias.mem",
+        "perc_weights_bias.mem", "perc_weights_bias.mem", "perc_weights_bias.mem", "perc_weights_bias.mem",
+        "perc_weights_bias.mem", "perc_weights_bias.mem", "perc_weights_bias.mem", "perc_weights_bias.mem",
+        "perc_weights_bias.mem", "perc_weights_bias.mem", "perc_weights_bias.mem", "perc_weights_bias.mem",
+        "perc_weights_bias.mem", "perc_weights_bias.mem", "perc_weights_bias.mem", "perc_weights_bias.mem",
+        "perc_weights_bias.mem", "perc_weights_bias.mem", "perc_weights_bias.mem", "perc_weights_bias.mem",
+        "perc_weights_bias.mem", "perc_weights_bias.mem", "perc_weights_bias.mem", "perc_weights_bias.mem",
+        "perc_weights_bias.mem", "perc_weights_bias.mem", "perc_weights_bias.mem", "perc_weights_bias.mem"
+    };
+
+    PEControllerV2 #(.PERC_PARAM_FILES(PERC_PARAM_FILES)) UUT (
+        .clk,
+        .rst
+    );
+    
+    initial begin
+        #10;
+        rst = 0;
+        
+        #90;
+        
+        $finish;
+    end
+
 endmodule

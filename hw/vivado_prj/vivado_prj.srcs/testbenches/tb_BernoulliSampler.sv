@@ -2,10 +2,10 @@
 
 module tb_BernoulliSampler;
 
-    logic clk;
-    logic rst_n;
+    logic clk = 1;
+    logic rst = 1;
     
-    logic fifo_rd_en;
+    logic fifo_rd_en = 0;
     wire [127:0] fifo_out;
     wire fifo_full;
     wire fifo_empty;
@@ -13,7 +13,7 @@ module tb_BernoulliSampler;
 
     BernoulliSampler uut (
         .clk,
-        .rst_n,
+        .rst,
         
         .fifo_rd_en,
         .fifo_out,
@@ -25,13 +25,9 @@ module tb_BernoulliSampler;
     always #5 clk <= ~clk;
     
     initial begin
-        clk = 1;
-        rst_n = 0;
-        fifo_rd_en = 0;
+        #10;
+        rst = 0;
 
-        // Wait 5 cycles for reset.        
-        #50;
-        rst_n = 1;
         // Fifo is empty in the beginning.
         assert (fifo_empty == 1) else $error("Fifo is not empty in the beginning");
         
@@ -39,18 +35,30 @@ module tb_BernoulliSampler;
         #30;
         assert (fifo_empty == 1) else $error("Fifo is not empty after 3 cycles");
         
-        // After 4 cycles from beginning fifo should contain 1 element.
-        #10;
+        // On 4th cycles a value is written into the fifo and should be now visible.
+        #15;
         // The empy flag should be deasserted at the end of the cycle - check on negedge.
-        #5;
-        assert (fifo_empty == 0) else $error("Fifo is empty after 4 cycles - should contain 1 element");        
-        #5;
-    end
-    
-    always @(posedge clk) begin
-        if (!fifo_empty) begin
-            fifo_rd_en <= ~fifo_rd_en;
-        end
+        #5 assert (fifo_empty == 0) else $error("Fifo is empty after 4 cycles - should contain 1 element");
+
+        // Wait to get more values in the fifo (also to separate experiments in waveform).
+        #100;
+
+        // Read value and check that it is latched after read.
+        fifo_rd_en = 1;
+        assert (fifo_out != 0) else $error("Fifo should not be empty now");
+        #10;
+        
+        fifo_rd_en = 0;
+        #20;
+        assert (fifo_out != 0) else $error("Fifo out is empty if not read");
+        
+        #100;
+        
+        // Check if I can get new data out of full fifo every cycle
+        fifo_rd_en = 1;
+        #140;
+
+        $finish;        
     end
 
 endmodule

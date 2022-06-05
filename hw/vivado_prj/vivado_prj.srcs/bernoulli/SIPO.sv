@@ -13,7 +13,7 @@ module SIPO #(IN_WIDTH = 32, OUT_WIDTH = 128) (
     bit [OUT_BITS:0] counter;
     
     // Output valid flag.
-    assign out_vld = (counter == (OUT_WIDTH / IN_WIDTH));
+    assign out_vld = (counter == (OUT_WIDTH / IN_WIDTH) - 1);
     
     // Count up until OUT_WIDTH.
     always @(posedge clk or posedge rst) begin
