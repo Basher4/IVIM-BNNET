@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_PEControllerV2_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="\$unit_BernoulliSampler_sv " />
+            <top_module name="glbl" />
+            <top_module name="tb_PEControllerV2" />
+            <top_module name="vcomponents" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="50.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="350.001 ns"></ZoomEndTime>
+      <Cursor1Time time="300.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="195"></NameColumnWidth>
+      <ValueColumnWidth column_width="80"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="9" />
+   <wvobject fp_name="/tb_PEControllerV2/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_PEControllerV2/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="group2583" type="group">
+      <obj_property name="label">State Machine</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/sample_iteration" type="array">
+         <obj_property name="ElementShortName">sample_iteration[7:0]</obj_property>
+         <obj_property name="ObjectShortName">sample_iteration[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/eval_iteration" type="array">
+         <obj_property name="ElementShortName">eval_iteration[4:0]</obj_property>
+         <obj_property name="ObjectShortName">eval_iteration[4:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/state" type="array">
+         <obj_property name="ElementShortName">state[63:0]</obj_property>
+         <obj_property name="ObjectShortName">state[63:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group2548" type="group">
+      <obj_property name="label">UUT Drivable</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ioc_i_load_next_input" type="logic">
+         <obj_property name="ElementShortName">ioc_i_load_next_input</obj_property>
+         <obj_property name="ObjectShortName">ioc_i_load_next_input</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ioc_i_write_output" type="logic">
+         <obj_property name="ElementShortName">ioc_i_write_output</obj_property>
+         <obj_property name="ObjectShortName">ioc_i_write_output</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ioc_i_output_data" type="array">
+         <obj_property name="ElementShortName">ioc_i_output_data[0:31][15:0]</obj_property>
+         <obj_property name="ObjectShortName">ioc_i_output_data[0:31][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ilc_i_we" type="logic">
+         <obj_property name="ElementShortName">ilc_i_we</obj_property>
+         <obj_property name="ObjectShortName">ilc_i_we</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ilc_i_wr_addr" type="array">
+         <obj_property name="ElementShortName">ilc_i_wr_addr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">ilc_i_wr_addr[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ilc_i_dina_flat" type="array">
+         <obj_property name="ElementShortName">ilc_i_dina_flat[511:0]</obj_property>
+         <obj_property name="ObjectShortName">ilc_i_dina_flat[511:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ilc_i_rd_addr" type="array">
+         <obj_property name="ElementShortName">ilc_i_rd_addr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">ilc_i_rd_addr[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ilc_i_data" type="array">
+         <obj_property name="ElementShortName">ilc_i_data[0:31][15:0]</obj_property>
+         <obj_property name="ObjectShortName">ilc_i_data[0:31][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/bs_i_read_next_sample" type="logic">
+         <obj_property name="ElementShortName">bs_i_read_next_sample</obj_property>
+         <obj_property name="ObjectShortName">bs_i_read_next_sample</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/pl_i_bypass_dropout" type="logic">
+         <obj_property name="ElementShortName">pl_i_bypass_dropout</obj_property>
+         <obj_property name="ObjectShortName">pl_i_bypass_dropout</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/pl_i_bypass_relu" type="logic">
+         <obj_property name="ElementShortName">pl_i_bypass_relu</obj_property>
+         <obj_property name="ObjectShortName">pl_i_bypass_relu</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/pl_i_param_idx" type="array">
+         <obj_property name="ElementShortName">pl_i_param_idx[16:0]</obj_property>
+         <obj_property name="ObjectShortName">pl_i_param_idx[16:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/pl_i_data_tag" type="logic">
+         <obj_property name="ElementShortName">pl_i_data_tag</obj_property>
+         <obj_property name="ObjectShortName">pl_i_data_tag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/pl_i_data" type="array">
+         <obj_property name="ElementShortName">pl_i_data[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">pl_i_data[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/pl_i_data_vld" type="logic">
+         <obj_property name="ElementShortName">pl_i_data_vld</obj_property>
+         <obj_property name="ObjectShortName">pl_i_data_vld</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group2555" type="group">
+      <obj_property name="label">CTRL I/O Controller</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ioc_i_load_next_input" type="logic">
+         <obj_property name="ElementShortName">ioc_i_load_next_input</obj_property>
+         <obj_property name="ObjectShortName">ioc_i_load_next_input</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ioc_i_write_output" type="logic">
+         <obj_property name="ElementShortName">ioc_i_write_output</obj_property>
+         <obj_property name="ObjectShortName">ioc_i_write_output</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ioc_i_output_data" type="array">
+         <obj_property name="ElementShortName">ioc_i_output_data[0:31][15:0]</obj_property>
+         <obj_property name="ObjectShortName">ioc_i_output_data[0:31][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ioc_o_input_data" type="array">
+         <obj_property name="ElementShortName">ioc_o_input_data[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">ioc_o_input_data[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ioc_o_init_done" type="logic">
+         <obj_property name="ElementShortName">ioc_o_init_done</obj_property>
+         <obj_property name="ObjectShortName">ioc_o_init_done</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ioc_o_done" type="logic">
+         <obj_property name="ElementShortName">ioc_o_done</obj_property>
+         <obj_property name="ObjectShortName">ioc_o_done</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group2563" type="group">
+      <obj_property name="label">CTRL IL Cache</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ilc_i_we" type="logic">
+         <obj_property name="ElementShortName">ilc_i_we</obj_property>
+         <obj_property name="ObjectShortName">ilc_i_we</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ilc_i_wr_addr" type="array">
+         <obj_property name="ElementShortName">ilc_i_wr_addr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">ilc_i_wr_addr[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ilc_i_dina_flat" type="array">
+         <obj_property name="ElementShortName">ilc_i_dina_flat[511:0]</obj_property>
+         <obj_property name="ObjectShortName">ilc_i_dina_flat[511:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ilc_i_rd_addr" type="array">
+         <obj_property name="ElementShortName">ilc_i_rd_addr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">ilc_i_rd_addr[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ilc_o_doutb_flat" type="array">
+         <obj_property name="ElementShortName">ilc_o_doutb_flat[2047:0]</obj_property>
+         <obj_property name="ObjectShortName">ilc_o_doutb_flat[2047:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ilc_i_data" type="array">
+         <obj_property name="ElementShortName">ilc_i_data[0:31][15:0]</obj_property>
+         <obj_property name="ObjectShortName">ilc_i_data[0:31][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/ilc_o_data" type="array">
+         <obj_property name="ElementShortName">ilc_o_data[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">ilc_o_data[0:127][15:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group2569" type="group">
+      <obj_property name="label">CTRL Bernoulli Sampelr</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/bs_i_read_next_sample" type="logic">
+         <obj_property name="ElementShortName">bs_i_read_next_sample</obj_property>
+         <obj_property name="ObjectShortName">bs_i_read_next_sample</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/bs_o_dropout_mask" type="array">
+         <obj_property name="ElementShortName">bs_o_dropout_mask[127:0]</obj_property>
+         <obj_property name="ObjectShortName">bs_o_dropout_mask[127:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/bs_o_dropout_mask_vld" type="logic">
+         <obj_property name="ElementShortName">bs_o_dropout_mask_vld</obj_property>
+         <obj_property name="ObjectShortName">bs_o_dropout_mask_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/bs_o_ctrl_is_full" type="logic">
+         <obj_property name="ElementShortName">bs_o_ctrl_is_full</obj_property>
+         <obj_property name="ObjectShortName">bs_o_ctrl_is_full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/bs_o_ctrl_is_empty" type="logic">
+         <obj_property name="ElementShortName">bs_o_ctrl_is_empty</obj_property>
+         <obj_property name="ObjectShortName">bs_o_ctrl_is_empty</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group2580" type="group">
+      <obj_property name="label">CTRL Processing Lanes</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/pl_i_bypass_dropout" type="logic">
+         <obj_property name="ElementShortName">pl_i_bypass_dropout</obj_property>
+         <obj_property name="ObjectShortName">pl_i_bypass_dropout</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/pl_i_bypass_relu" type="logic">
+         <obj_property name="ElementShortName">pl_i_bypass_relu</obj_property>
+         <obj_property name="ObjectShortName">pl_i_bypass_relu</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/pl_i_param_idx" type="array">
+         <obj_property name="ElementShortName">pl_i_param_idx[16:0]</obj_property>
+         <obj_property name="ObjectShortName">pl_i_param_idx[16:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/pl_i_data_tag" type="logic">
+         <obj_property name="ElementShortName">pl_i_data_tag</obj_property>
+         <obj_property name="ObjectShortName">pl_i_data_tag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/pl_o_data_tag" type="logic">
+         <obj_property name="ElementShortName">pl_o_data_tag</obj_property>
+         <obj_property name="ObjectShortName">pl_o_data_tag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/pl_i_data" type="array">
+         <obj_property name="ElementShortName">pl_i_data[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">pl_i_data[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/pl_i_data_vld" type="logic">
+         <obj_property name="ElementShortName">pl_i_data_vld</obj_property>
+         <obj_property name="ObjectShortName">pl_i_data_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/pl_o_data" type="array">
+         <obj_property name="ElementShortName">pl_o_data[0:31][15:0]</obj_property>
+         <obj_property name="ObjectShortName">pl_o_data[0:31][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/pl_o_data_vld_partial" type="array">
+         <obj_property name="ElementShortName">pl_o_data_vld_partial[0:31]</obj_property>
+         <obj_property name="ObjectShortName">pl_o_data_vld_partial[0:31]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/pl_o_data_vld_all" type="logic">
+         <obj_property name="ElementShortName">pl_o_data_vld_all</obj_property>
+         <obj_property name="ObjectShortName">pl_o_data_vld_all</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group76" type="group">
+      <obj_property name="label">PL 0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /bypass_dropout" type="logic">
+         <obj_property name="ElementShortName">bypass_dropout</obj_property>
+         <obj_property name="ObjectShortName">bypass_dropout</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /bypass_relu" type="logic">
+         <obj_property name="ElementShortName">bypass_relu</obj_property>
+         <obj_property name="ObjectShortName">bypass_relu</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /i_data_tag" type="logic">
+         <obj_property name="ElementShortName">i_data_tag</obj_property>
+         <obj_property name="ObjectShortName">i_data_tag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /o_data_tag" type="logic">
+         <obj_property name="ElementShortName">o_data_tag</obj_property>
+         <obj_property name="ObjectShortName">o_data_tag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /dropout_mask" type="array">
+         <obj_property name="ElementShortName">dropout_mask[127:0]</obj_property>
+         <obj_property name="ObjectShortName">dropout_mask[127:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /param_addr" type="array">
+         <obj_property name="ElementShortName">param_addr[16:0]</obj_property>
+         <obj_property name="ObjectShortName">param_addr[16:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /din" type="array">
+         <obj_property name="ElementShortName">din[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">din[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /din_vld" type="logic">
+         <obj_property name="ElementShortName">din_vld</obj_property>
+         <obj_property name="ObjectShortName">din_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /dout" type="array">
+         <obj_property name="ElementShortName">dout[15:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /dout_vld" type="logic">
+         <obj_property name="ElementShortName">dout_vld</obj_property>
+         <obj_property name="ObjectShortName">dout_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /dropout_dout" type="array">
+         <obj_property name="ElementShortName">dropout_dout[0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">dropout_dout[0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /dropout_dout_vld" type="logic">
+         <obj_property name="ElementShortName">dropout_dout_vld</obj_property>
+         <obj_property name="ObjectShortName">dropout_dout_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /perceptron_dout" type="array">
+         <obj_property name="ElementShortName">perceptron_dout[15:0]</obj_property>
+         <obj_property name="ObjectShortName">perceptron_dout[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /perceptron_dout_vld" type="logic">
+         <obj_property name="ElementShortName">perceptron_dout_vld</obj_property>
+         <obj_property name="ObjectShortName">perceptron_dout_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /relu_dout" type="array">
+         <obj_property name="ElementShortName">relu_dout[15:0]</obj_property>
+         <obj_property name="ObjectShortName">relu_dout[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /relu_dout_vld" type="logic">
+         <obj_property name="ElementShortName">relu_dout_vld</obj_property>
+         <obj_property name="ObjectShortName">relu_dout_vld</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /pp_drop_bias" type="array">
+         <obj_property name="ElementShortName">pp_drop_bias[15:0]</obj_property>
+         <obj_property name="ObjectShortName">pp_drop_bias[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /pp_drop_relu_bypass" type="logic">
+         <obj_property name="ElementShortName">pp_drop_relu_bypass</obj_property>
+         <obj_property name="ObjectShortName">pp_drop_relu_bypass</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /pp_drop_data_tag" type="logic">
+         <obj_property name="ElementShortName">pp_drop_data_tag</obj_property>
+         <obj_property name="ObjectShortName">pp_drop_data_tag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /pp_perc_relu_bypass" type="logic">
+         <obj_property name="ElementShortName">pp_perc_relu_bypass</obj_property>
+         <obj_property name="ObjectShortName">pp_perc_relu_bypass</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_PEControllerV2/UUT/\genblk1[0].u_ProcessingLane /pp_perc_data_tag" type="logic">
+         <obj_property name="ElementShortName">pp_perc_data_tag</obj_property>
+         <obj_property name="ObjectShortName">pp_perc_data_tag</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

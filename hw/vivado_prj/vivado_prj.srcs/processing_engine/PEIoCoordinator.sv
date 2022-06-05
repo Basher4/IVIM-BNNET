@@ -8,8 +8,9 @@ module PEIoCoordinator (
     output  logic        o_done,
 
     // Input data
-    input   logic        i_load_next_input,
+    input   logic        i_load_next_input, 
     output  nndata       o_input_data [INPUT_DIM],
+    output  logic        o_input_data_vld,
     // Output data
     input   nndata       i_output_data,
     input   logic        i_output_data_we
@@ -33,18 +34,18 @@ module PEIoCoordinator (
     bram_input_data_512d u_BramInData (
         .clka(clk),    // input wire clka
         .ena(1),      // input wire ena
-        .addra(input_rd_addr),  // input wire [8 : 0] addra
+        .addra(input_rd_addr + 1),  // input wire [8 : 0] addra
         .douta(input_data_flattened)  // output wire [2047 : 0] douta
     );
-
-    // Glue for rewiring flattened vector into an array.
-    assign {>>{o_input_data}} = input_data_flattened;
     
     always @(posedge clk or posedge rst) begin
         if (rst)
-            input_rd_addr <= 0;
+            input_rd_addr <= ~0;
         else begin
-            input_rd_addr <= i_load_next_input ? input_rd_addr + 1 : input_rd_addr;
+            if (i_load_next_input) begin
+                input_rd_addr <= input_rd_addr + 1;
+                {>>{o_input_data}} <= input_data_flattened;
+            end
         end
     end
 

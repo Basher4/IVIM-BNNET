@@ -27,7 +27,7 @@ module tb_PEControllerV2;
         #10;
         rst = 0;
         
-        #90;
+        #390;
         
         $finish;
     end
