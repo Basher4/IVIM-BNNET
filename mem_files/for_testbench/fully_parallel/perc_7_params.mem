@@ -1,0 +1,13 @@
+// INT_BITS = 3
+011f 002a feb7 fd9c fe6f ff1d ff93 fff4 003e 003a 0297 00fe    // bias = 00fe, w[0] = 0297, w[10] = 011f
+ff83 007f 0112 01cb 0119 01c9 010e 013e 0041 ff42 00ea ff2e    // bias = ff2e, w[0] = 00ea, w[10] = ff83
+0e5b 0d80 f1ce 10bf ef5d f150 10d9 0dbc ee66 0ee5 f127 feab    // bias = feab, w[0] = f127, w[10] = 0e5b
+ff87 ff5e ffdd 0107 0138 00e5 0099 0031 ff9a ff34 ffd7 ffd2    // bias = ffd2, w[0] = ffd7, w[10] = ff87
+ff2b 00e4 00ba 00ef ff72 00da 002e fe63 fec7 ff56 fe0e 0025    // bias = 0025, w[0] = fe0e, w[10] = ff2b
+eb85 0fbb 0fc3 ee0c ec49 ec9a 0b69 0db3 1017 ea75 0ca2 f132    // bias = f132, w[0] = 0ca2, w[10] = eb85
+034d 037c 0233 ffcf ff48 ff33 ff26 feae ff4a ffcc 004a 0048    // bias = 0048, w[0] = 004a, w[10] = 034d
+ffef 0188 ffb9 ff81 ffae 0021 0163 0063 ffc1 00f0 00b7 000c    // bias = 000c, w[0] = 00b7, w[10] = ffef
+0cac 095b eefe 082b 091d eb86 0b70 0b09 0ce3 f00e eb36 f527    // bias = f527, w[0] = eb36, w[10] = 0cac
+0041 fff7 ff7a feec ff4e ffa5 ffdb ffe8 ffa6 ff00 013b fee8    // bias = fee8, w[0] = 013b, w[10] = 0041
+ffff 02a1 ff02 ff58 02bb 01c0 fe9c fe3d fd4c 0137 ff12 ff34    // bias = ff34, w[0] = ff12, w[10] = ffff
+05cf 05e3 067d fa9c f1c9 07be 0717 f884 f5b7 fa04 06f4 f3f4    // bias = f3f4, w[0] = 06f4, w[10] = 05cf

@@ -16,7 +16,7 @@ sys.path.append('./sw/')
 NEURAL_NETWORK_PATH = "./sw/models/bnn_e08_patient.pt"
 MEM_FILE_PATH = "./mem_files/e08_patient"
 ACCELERATOR_NUM_LANES = 32
-accelerator_perceptrons = [[]] * ACCELERATOR_NUM_LANES
+accelerator_perceptrons = [[] for _ in range(ACCELERATOR_NUM_LANES)]
 TOTAL_BITS = 16
 MEMORY_WIDTH = 128 + 1
 

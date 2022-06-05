@@ -1,0 +1,13 @@
+// INT_BITS = 3
+006f fff2 ff41 fede ffba 0066 00d7 0137 010d 004c 032c 01ee    // bias = 01ee, w[0] = 032c, w[10] = 006f
+ff6c 00b4 0105 01b6 0363 01a0 ff1d 0153 ffdb ff29 0100 ff31    // bias = ff31, w[0] = 0100, w[10] = ff6c
+0e5b 0d80 f1ce 10bf ef5d f150 10d9 0dbc ee66 0ee5 f127 feab    // bias = feab, w[0] = f127, w[10] = 0e5b
+ffcd fffb 004a 0082 0053 0025 fff2 ff8e ff0c ff38 009f 0096    // bias = 0096, w[0] = 009f, w[10] = ffcd
+fff9 ffbc ffdb ffd0 0055 ff38 01f2 00d9 004d 01ab 019b 0000    // bias = 0000, w[0] = 019b, w[10] = fff9
+eb85 0fbb 0fc3 ee0c ec49 ec9a 0b69 0db3 1017 ea75 0ca2 f132    // bias = f132, w[0] = 0ca2, w[10] = eb85
+fd64 fdbb fe86 ffaa 0061 008d 005f 0037 003e 000a fffd fff9    // bias = fff9, w[0] = fffd, w[10] = fd64
+ffbb 0272 ffab ff9f ffcd 0011 0182 0072 ffd7 00f6 00a9 0003    // bias = 0003, w[0] = 00a9, w[10] = ffbb
+0cac 095b eefe 082b 091d eb86 0b70 0b09 0ce3 f00e eb36 f527    // bias = f527, w[0] = eb36, w[10] = 0cac
+00fc 00d9 0090 0022 0023 0032 0037 0045 007f 010e 01db 0329    // bias = 0329, w[0] = 01db, w[10] = 00fc
+ff39 ffa4 f9d6 012b 0203 0100 0251 01db 005b 018d 0255 fe43    // bias = fe43, w[0] = 0255, w[10] = ff39
+05cf 05e3 067d fa9c f1c9 07be 0717 f884 f5b7 fa04 06f4 f3f4    // bias = f3f4, w[0] = 06f4, w[10] = 05cf
