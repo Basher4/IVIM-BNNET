@@ -22,7 +22,7 @@ ACCELERATOR_NUM_LANES = 11
 accelerator_perceptrons = [[] for _ in range(ACCELERATOR_NUM_LANES)]
 TOTAL_BITS = 16
 MEMORY_WIDTH = 128 + 1
-PAD_WITH_ZEROS = False
+PAD_WITH_ZEROS = True
 
 # Load neural network
 net: torch.nn.Module = torch.load(NEURAL_NETWORK_PATH, map_location="cpu")
@@ -86,14 +86,6 @@ with gzip.open(INPUT_SIGNALS_PATH) as fd:
 #             error += err * err
 #     denom += signal_noisy.shape[0] * signal_noisy.shape[1]
 
-#     # Error from ground truth outputs
-#     for gtp in input_data[1:]:
-#         for row in gtp:
-#             for val in row:
-#                 err = we - float(FixedPoint(float(val), True, int_bits, TOTAL_BITS - int_bits))
-#                 error += err * err
-#         denom += gtp.shape[0] * gtp.shape[1]
-
 #     error /= denom
 #     rmse = torch.sqrt(error)
 
@@ -102,21 +94,31 @@ with gzip.open(INPUT_SIGNALS_PATH) as fd:
 #     if rmse < best_rmse:
 #         best_rmse = rmse
 #         best_int_bits = int_bits
-#     else:
-#         break
 best_int_bits = 3
 
-# Output memory files for 32 perceptrons
+# Output memory files for perceptrons
 for pi, pd in enumerate(accelerator_perceptrons):
     with open(f"{MEM_FILE_PATH}/perc_{pi}_params.mem", "w") as fd:
         fd.write(f"// INT_BITS = {best_int_bits}\n")
         for si, sd in enumerate(pd):
-            pdata = [FixedPoint(val, True, best_int_bits, TOTAL_BITS - best_int_bits) for val in sd]
+            pdata = [FixedPoint(val, True, best_int_bits, TOTAL_BITS - best_int_bits) for val in reversed(sd)]
 
             if PAD_WITH_ZEROS:
                 while len(pdata) < MEMORY_WIDTH:
                     pdata.append(FixedPoint(0, True, best_int_bits, TOTAL_BITS - best_int_bits))
 
-            fd.write(" ".join(f"{elem:0{4}x}" for elem in reversed(pdata)))
+            fd.write("".join(f"{elem:0{4}x}" for elem in reversed(pdata)))
             fd.write(f"    // bias = {pdata[0]:0{4}x}, w[0] = {pdata[1]:0{4}x}, w[{len(sd)-2}] = {pdata[-1]:0{4}x}")
             fd.write('\n')
+
+
+# Quantize voxel data
+with open(f"{MEM_FILE_PATH}/din.mem", "w") as fd:
+    fd.write(f"// INT_BITS = {best_int_bits}\n")
+    
+    for voxel in input_data[0][:4]:
+        pdata = [FixedPoint(bv, True, best_int_bits, TOTAL_BITS - best_int_bits) for bv in voxel]
+        fd.write(" ".join(f"{elem:0{4}x}" for elem in pdata))
+        if PAD_WITH_ZEROS:
+            fd.write(" ".join("0" for _ in range(128 - len(pdata))))
+        fd.write(f"    // bv0 = {pdata[0]:0{4}x}\n")
