@@ -9,6 +9,8 @@ import torch
 import sys
 import json
 
+from tqdm import tqdm
+
 sys.path.append('./sw/')
 
 from IVIMNET.hyperparams import hyperparams as hp_example_1
@@ -27,6 +29,7 @@ cov_global = defaultdict(list)
 
 device = "cpu"
 
+pbar = tqdm(total=len(SNR)**2)
 for train_snr in SNR:
     net = torch.load(BNN_PATH.format(train_snr, i), map_location=device)
     for eval_snr in SNR:
@@ -56,7 +59,9 @@ for train_snr in SNR:
         del x_sigma
         del x_cov
         del ground_truth["x"]
+        pbar.update(1)
     del net
+pbar.close()
         
 
 for train_snr in SNR:
