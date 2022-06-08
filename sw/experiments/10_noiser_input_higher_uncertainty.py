@@ -63,7 +63,7 @@ for train_snr in SNR:
     del net
 pbar.close()
 
-with open("./sw/data/e10_dict.pickle", "wb"):
+with open("./sw/data/e10_dict.pickle", "wb") as fd:
     pickle.dump(cov_global, fd)
 
 for train_snr in SNR:
