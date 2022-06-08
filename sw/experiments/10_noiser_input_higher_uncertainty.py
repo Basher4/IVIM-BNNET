@@ -62,7 +62,9 @@ for train_snr in SNR:
         pbar.update(1)
     del net
 pbar.close()
-        
+
+with open("./sw/data/e10_dict.pickle", "wb"):
+    pickle.dump(cov_global, fd)
 
 for train_snr in SNR:
     plt.plot(cov_global[train_snr], label=f"Traning SNR {train_snr}")
