@@ -1,0 +1,12 @@
+{
+    "signal_path": "./data/signals/train_5SNR.pickle.gz",
+    "model_path": "./models/ivimnet_e07_SNR5_3.pt",
+    "snr": 5,
+    "bayes_training_samples": 0,
+    "num_bvalues": 11,
+    "dorpout_p": "0.1",
+    "activation_fn": "elu",
+    "epochs": 152,
+    "final_val_loss": 0.025035819823020382,
+    "training_time": 1640.2134015429765
+}

@@ -1,0 +1,12 @@
+{
+    "signal_path": "./data/signals/train_5SNR.pickle.gz",
+    "model_path": "./models/bnn_e01_SNR5_0.pt",
+    "snr": 5,
+    "bayes_training_samples": 256,
+    "num_bvalues": 11,
+    "dorpout_p": 0.1,
+    "activation_fn": "relu",
+    "epochs": 388,
+    "final_val_loss": 0.034077501855790615,
+    "training_time": 3580.1060156999997
+}

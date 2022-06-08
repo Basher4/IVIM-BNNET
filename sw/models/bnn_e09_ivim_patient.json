@@ -1,0 +1,12 @@
+{
+    "signal_path": "./sw/data/example_data/data.nii.gz",
+    "model_path": "./sw/models/bnn_e09_ivim_patient",
+    "snr": -1,
+    "bayes_training_samples": 0,
+    "num_bvalues": 104,
+    "dorpout_p": 0.1,
+    "activation_fn": "elu",
+    "epochs": 55,
+    "final_val_loss": 0.01589115522801876,
+    "training_time": 589.0074391607195
+}

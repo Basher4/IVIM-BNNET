@@ -1,0 +1,12 @@
+{
+    "signal_path": "./sw/data/example_data/data.nii.gz",
+    "model_path": "./sw/models/bnn_e08_patient",
+    "snr": -1,
+    "bayes_training_samples": 64,
+    "num_bvalues": 104,
+    "dorpout_p": 0.1,
+    "activation_fn": "relu",
+    "epochs": 56,
+    "final_val_loss": 0.04110949672758579,
+    "training_time": 702.9058253448457
+}

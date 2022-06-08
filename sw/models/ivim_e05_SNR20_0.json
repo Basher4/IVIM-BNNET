@@ -1,0 +1,12 @@
+{
+    "signal_path": "./sw//data/signals/train_20SNR.pickle.gz",
+    "model_path": "./sw/models/ivim_e05_SNR20_0.pt",
+    "snr": 20,
+    "bayes_training_samples": 0,
+    "num_bvalues": 11,
+    "dorpout_p": 0.1,
+    "activation_fn": "relu",
+    "epochs": 105,
+    "final_val_loss": 0.0019337520546590288,
+    "training_time": 1132.7010593935847
+}
