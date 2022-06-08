@@ -25,14 +25,15 @@ i = 0
 
 cov_global = defaultdict(list)
 
+device = "cpu"
+
 for train_snr in SNR:
-    net = torch.load(BNN_PATH.format(train_snr, i), map_location="cuda")
-    
+    net = torch.load(BNN_PATH.format(train_snr, i), map_location=device)
     for eval_snr in SNR:
         with gzip.open(SIGNAL_PATH.format(eval_snr, i)) as fd:
             [dwi_image_long, Dt_truth, Fp_truth, Dp_truth] = pickle.load(fd)
             ground_truth = {
-                "x": torch.from_numpy(dwi_image_long).float().to("cuda"),
+                "x": torch.from_numpy(dwi_image_long).float().to(device),
                 "dt": torch.from_numpy(Dt_truth).reshape((100*100, 1)),
                 "fp": torch.from_numpy(Fp_truth).reshape((100*100, 1)),
                 "dp": torch.from_numpy(Dp_truth).reshape((100*100, 1))
@@ -46,9 +47,17 @@ for train_snr in SNR:
 
         cov_global[train_snr].append(x_cov)
         
+        del x
+        del dt
+        del fp
+        del dp
+        del s0
+        del x_mu
+        del x_sigma
+        del x_cov
         del ground_truth["x"]
-        
     del net
+        
 
 for train_snr in SNR:
     plt.plot(cov_global[train_snr], label=f"Traning SNR {train_snr}")
