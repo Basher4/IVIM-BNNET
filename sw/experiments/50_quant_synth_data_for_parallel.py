@@ -101,22 +101,21 @@ for pi, pd in enumerate(accelerator_perceptrons):
     with open(f"{MEM_FILE_PATH}/perc_{pi}_params.mem", "w") as fd:
         fd.write(f"// INT_BITS = {best_int_bits}\n")
         for si, sd in enumerate(pd):
-            pdata = [FixedPoint(val, True, best_int_bits, TOTAL_BITS - best_int_bits) for val in reversed(sd)]
-
+            pdata = [FixedPoint(val, True, best_int_bits, TOTAL_BITS - best_int_bits) for val in sd]
             if PAD_WITH_ZEROS:
                 while len(pdata) < MEMORY_WIDTH:
                     pdata.append(FixedPoint(0, True, best_int_bits, TOTAL_BITS - best_int_bits))
 
-            fd.write("".join(f"{elem:0{4}x}" for elem in reversed(pdata)))
-            fd.write(f"    // bias = {pdata[0]:0{4}x}, w[0] = {pdata[1]:0{4}x}, w[{len(sd)-2}] = {pdata[-1]:0{4}x}")
+            fd.write("".join(f"{elem:0{4}x}" for elem in pdata))
+            fd.write(f"    // bias = {pdata[0]:0{4}x}, w[0] = {pdata[1]:0{4}x}, w[{len(sd)-2}] = {pdata[len(sd)-1]:0{4}x}")
             fd.write('\n')
 
 
 # Quantize voxel data
 with open(f"{MEM_FILE_PATH}/din.mem", "w") as fd:
-    fd.write(f"// INT_BITS = {best_int_bits}\n")
+    fd.write(f"// INT_BITS = {best_int_bits}, {len(input_data[0])} elements\n")
     
-    for voxel in input_data[0][:4]:
+    for voxel in input_data[0]:
         pdata = [FixedPoint(bv, True, best_int_bits, TOTAL_BITS - best_int_bits) for bv in voxel]
         fd.write(" ".join(f"{elem:0{4}x}" for elem in pdata))
         if PAD_WITH_ZEROS:

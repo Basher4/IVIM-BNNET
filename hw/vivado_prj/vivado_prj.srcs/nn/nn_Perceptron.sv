@@ -41,8 +41,8 @@ module nn_Perceptron #(integer FEATURES = 128, string PARAM_FILE = "none") (
 
     // BRAM for weights and biases.
     bit [129*FP_SIZE-1:0] rom_out;
-    assign {>>{weights}} = rom_out[129*FP_SIZE-1:FP_SIZE];
-    assign bias_rom = rom_out[FP_SIZE-1:0];
+    assign {>>{weights}} = rom_out[128*FP_SIZE-1:0];
+    assign bias_rom = rom_out[129*FP_SIZE-1:128*FP_SIZE];
 
     xpm_memory_sprom #(
         .ADDR_WIDTH_A(PERC_PARAM_ADDR_WIDTH),              // DECIMAL

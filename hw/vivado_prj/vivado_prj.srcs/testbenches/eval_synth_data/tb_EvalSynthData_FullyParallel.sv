@@ -2,14 +2,19 @@
 
 module tb_EvalSynthData_FullyParallel;
 
-    localparam VOXELS_TO_EVALUATE = 10;
+    localparam VOXELS_TO_EVALUATE = 4;
     localparam PARAMS_TO_EVALUATE = 4;
     localparam SAMPLES = 32;
     localparam NUM_LANES = 11;
+    localparam string perc_param_file [NUM_LANES] = { "perc_0_params.mem", "perc_1_params.mem", "perc_2_params.mem",
+                                                      "perc_3_params.mem", "perc_4_params.mem", "perc_5_params.mem",
+                                                      "perc_6_params.mem", "perc_7_params.mem", "perc_8_params.mem",
+                                                      "perc_9_params.mem", "perc_10_params.mem" };
 
     integer voxel_idx = 0;
     integer param_idx = 0;
     integer sample = 0;
+    integer f;
 
     logic clk = 1;
     logic rst = 1;
@@ -17,14 +22,12 @@ module tb_EvalSynthData_FullyParallel;
 
     // Memories for input and output data.
     nndata test_din [VOXELS_TO_EVALUATE][128];
-    integer ao_vox_idx = 0;
-    integer ao_param_idx = 0;
-    integer ao_sample_idx = 0;
-    nndata accelerator_out [VOXELS_TO_EVALUATE][PARAMS_TO_EVALUATE];
+    nndata accelerator_out [VOXELS_TO_EVALUATE][PARAMS_TO_EVALUATE][SAMPLES];
+    integer ao_vox_idx = 0, ao_param_idx = 0, ao_sample_idx = 0;
 
     // IL$ memory - 11 elements * 64 deep
     integer il_cache_addr = 0;
-    nndata il_cache [64][NUM_LANES];
+    nndata il_cache [64][128];
 
     // Bernoulli sampler control signals.
     logic         bs_i_read_next_sample = 0;
@@ -43,17 +46,29 @@ module tb_EvalSynthData_FullyParallel;
     logic         pl_i_data_vld = 0;
     nndata        pl_o_data [NUM_LANES];
     logic         pl_o_data_vld_partial [NUM_LANES];
-    logic         pl_o_data_vld_all = 0;
+    logic         pl_o_data_vld_all;
     assign pl_o_data_vld_all = pl_o_data_vld_partial[0];
 
-    // TODO: Load input data memory.
-    // TODO: Load parameters for processing units.
+    initial begin
+        $readmemh("din.mem", test_din);
+    end
+    
+    // Instantiate Bernoulli Sampler
+    BernoulliSampler #(.WIDTH(128), .DIV(1)) u_BernoulliSampler (
+        .clk,
+        .rst,
+        .fifo_rd_en(bs_i_read_next_sample),
+        .fifo_out(bs_o_dropout_mask),
+        .fifo_full(bs_o_ctrl_is_full),
+        .fifo_empty(bs_o_ctrl_is_empty),
+        .fifo_valid(bs_o_dropout_mask_vld)
+    );
 
     // Instantiate all 11 lanes to evaluate data.
     genvar i;
     generate
         for (i = 0; i < NUM_LANES; i += 1) begin : GEN_LANES
-            PEProcessingUnit #(.IN_WIDTH(128), .PARAM_FILE("Invalid String")) u_Lane (
+            PEProcessingUnit #(.IN_WIDTH(128), .PARAM_FILE(perc_param_file[i])) u_Lane (
                 .clk,
                 .rst,
             
@@ -76,8 +91,8 @@ module tb_EvalSynthData_FullyParallel;
 
     // Sanity check for simulation - make sure dropout mask is never empty if it's needed.
     always @(posedge clk) begin
-        if (bs_o_ctrl_is_empty) begin
-            $display("BernoulliSampler is empty! This is a functional simulation, shouldn't happen.");
+        if (bs_o_ctrl_is_empty && $realtime > 100) begin
+            $display("BernoulliSampler is empty at time %d (%t)! This is a functional simulation, shouldn't happen.", $realtime, $realtime);
             $stop;
         end
     end
@@ -86,11 +101,12 @@ module tb_EvalSynthData_FullyParallel;
     always @(posedge clk) begin
         if (pl_o_data_vld_all) begin
             if (pl_o_data_tag == DT_TO_IL_CACHE) begin
-                il_cache[il_cache_addr] = pl_o_data;
+                il_cache[il_cache_addr][0:10] = pl_o_data;
+                for (integer i = 11; i < 128; i += 1) il_cache[il_cache_addr][i] = 0;
                 il_cache_addr += 1;
             end else begin
                 assert (pl_o_data_tag == DT_TO_OUTPUT) else $stop;
-                accelerator_out[ao_vox_idx][ao_param_idx][ao_sample_idx] = pl_o_data;
+                accelerator_out[ao_vox_idx][ao_param_idx][ao_sample_idx] = pl_o_data[0];
                 ao_sample_idx += 1;
 
                 if (ao_sample_idx == SAMPLES) begin
@@ -128,13 +144,16 @@ module tb_EvalSynthData_FullyParallel;
                 pl_i_data_vld = 0;
 
                 // Wait for lanes to compute the result.
-                while (!pl_o_data_vld_all) #10;
+                // while (!pl_o_data_vld_all) #10;
+                #200;
                 // Write the result into IL$.
                 #10;
+                
 
                 /// Evaluate the second layer.
                 pl_i_param_idx += 1;
                 bs_i_read_next_sample = 1;
+                #10;
                 for (sample = 0; sample < SAMPLES; sample += 1) begin
                     pl_i_bypass_dropout = 0;
                     pl_i_bypass_relu = 0;
@@ -157,6 +176,47 @@ module tb_EvalSynthData_FullyParallel;
                 end
             end
         end
+        pl_i_data_vld = 0;
+        
+        // Wait until all elements are written.
+        while (ao_vox_idx < VOXELS_TO_EVALUATE) begin
+            #10;
+            if ($realtime > 30000) begin
+                $error("Waiting too long for finish");
+                $stop;
+            end
+        end
+        
+        // Print results.
+        for (integer i = 0; i < VOXELS_TO_EVALUATE; i += 1) begin
+            $display("Voxel %d: out0 = %x (%f), out1 = %x (%f), out2 = %x (%f), out3 = %x (%f)", i,
+                accelerator_out[i][0][0], fixed2real(accelerator_out[i][0][0]),
+                accelerator_out[i][1][0], fixed2real(accelerator_out[i][1][0]),
+                accelerator_out[i][2][0], fixed2real(accelerator_out[i][2][0]),
+                accelerator_out[i][3][0], fixed2real(accelerator_out[i][3][0]));
+        end
+
+        f = $fopen("output.txt","w");
+        
+        $display();
+        $display("===== OUTPUT FOR FURTHER EVALUATION =====");
+        $fwrite(f, "fully_parallel_out = [\n"); 
+        for (integer v = 0; v < VOXELS_TO_EVALUATE; v += 1) begin
+            $fwrite(f, "[");
+            for (integer p = 0; p < PARAMS_TO_EVALUATE; p += 1) begin
+                $fwrite("bit2fixed(");
+                for (integer s = 0; s < SAMPLES; s += 1) begin
+                    $fwrite("0x%x, ", accelerator_out[v][p][s]);                    
+                end
+                $fwrite("),\n");
+            end
+            $fwrite("],\n");
+        end
+        $fwrite("]\n");
+
+        $fclose(f);
+    
+        $finish;
     end
 
 endmodule

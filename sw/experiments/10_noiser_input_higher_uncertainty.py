@@ -27,50 +27,55 @@ i = 0
 
 cov_global = defaultdict(list)
 
-device = "cpu"
+# device = "cpu"
 
-pbar = tqdm(total=len(SNR)**2)
-for train_snr in SNR:
-    net = torch.load(BNN_PATH.format(train_snr, i), map_location=device)
-    for eval_snr in SNR:
-        with gzip.open(SIGNAL_PATH.format(eval_snr, i)) as fd:
-            [dwi_image_long, Dt_truth, Fp_truth, Dp_truth] = pickle.load(fd)
-            ground_truth = {
-                "x": torch.from_numpy(dwi_image_long).float().to(device),
-                "dt": torch.from_numpy(Dt_truth).reshape((100*100, 1)),
-                "fp": torch.from_numpy(Fp_truth).reshape((100*100, 1)),
-                "dp": torch.from_numpy(Dp_truth).reshape((100*100, 1))
-            }
+# pbar = tqdm(total=len(SNR)**2)
+# for train_snr in SNR:
+#     net = torch.load(BNN_PATH.format(train_snr, i), map_location=device)
+#     for eval_snr in SNR:
+#         with gzip.open(SIGNAL_PATH.format(eval_snr, i)) as fd:
+#             [dwi_image_long, Dt_truth, Fp_truth, Dp_truth] = pickle.load(fd)
+#             ground_truth = {
+#                 "x": torch.from_numpy(dwi_image_long).float().to(device),
+#                 "dt": torch.from_numpy(Dt_truth).reshape((100*100, 1)),
+#                 "fp": torch.from_numpy(Fp_truth).reshape((100*100, 1)),
+#                 "dp": torch.from_numpy(Dp_truth).reshape((100*100, 1))
+#             }
 
-        x, dt, fp, dp, s0 = net(ground_truth["x"])
+#         x, dt, fp, dp, s0 = net(ground_truth["x"])
 
-        x_mu = torch.mean(x, dim=0)
-        x_sigma = torch.std(x, dim=0) ** 2
-        x_cov = x_mu / x_sigma
+#         x_mu = torch.mean(x, dim=0)
+#         x_sigma = torch.std(x, dim=0) ** 2
+#         x_cov = x_mu / x_sigma
 
-        cov_global[train_snr].append(x_cov)
+#         cov_global[train_snr].append(x_cov)
         
-        del x
-        del dt
-        del fp
-        del dp
-        del s0
-        del x_mu
-        del x_sigma
-        del x_cov
-        del ground_truth["x"]
-        pbar.update(1)
-    del net
-pbar.close()
+#         del x
+#         del dt
+#         del fp
+#         del dp
+#         del s0
+#         del x_mu
+#         del x_sigma
+#         del x_cov
+#         del ground_truth["x"]
+#         pbar.update(1)
+#     del net
+# pbar.close()
 
-with open("./sw/data/e10_dict.pickle", "wb") as fd:
-    pickle.dump(cov_global, fd)
+# with open("./sw/data/e10_dict.pickle", "wb") as fd:
+#     pickle.dump(cov_global, fd)
+
+with open("./sw/data/e10_dict.pickle", "rb") as fd:
+    cov_global = pickle.load(fd)
 
 for train_snr in SNR:
-    plt.plot(cov_global[train_snr], label=f"Traning SNR {train_snr}")
+    plt.plot(SNR, [torch.mean(t).detach().numpy() for t in cov_global[train_snr]], label=f"Traning SNR {train_snr}", marker='o')
 plt.legend(loc=0)
 plt.title("Coefficient of Variation for IVIM-BNNET")
 plt.xticks(SNR)
-plt.tight_layout()
+# plt.tight_layout()
+plt.xlabel("SNR")
+plt.ylabel("Coefficient of Variation")
 # plt.savefig()
 plt.show()
