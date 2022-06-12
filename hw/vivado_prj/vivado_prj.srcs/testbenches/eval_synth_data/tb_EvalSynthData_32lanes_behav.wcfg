@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_EvalSynthData_32lanes_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="\$unit_BernoulliSampler_sv " />
+            <top_module name="glbl" />
+            <top_module name="tb_EvalSynthData_32lanes" />
+            <top_module name="vcomponents" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="20,537.149 ns"></ZoomStartTime>
+      <ZoomEndTime time="21,317.150 ns"></ZoomEndTime>
+      <Cursor1Time time="21,020.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="195"></NameColumnWidth>
+      <ValueColumnWidth column_width="60"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="28" />
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/voxel_idx" type="array">
+      <obj_property name="ElementShortName">voxel_idx[31:0]</obj_property>
+      <obj_property name="ObjectShortName">voxel_idx[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/param_idx" type="array">
+      <obj_property name="ElementShortName">param_idx[31:0]</obj_property>
+      <obj_property name="ObjectShortName">param_idx[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/sample" type="array">
+      <obj_property name="ElementShortName">sample[31:0]</obj_property>
+      <obj_property name="ObjectShortName">sample[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/test_din" type="array">
+      <obj_property name="ElementShortName">test_din[0:3][0:127][15:0]</obj_property>
+      <obj_property name="ObjectShortName">test_din[0:3][0:127][15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/accelerator_out" type="array">
+      <obj_property name="ElementShortName">accelerator_out[0:3][0:3][15:0]</obj_property>
+      <obj_property name="ObjectShortName">accelerator_out[0:3][0:3][15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/ao_vox_idx" type="array">
+      <obj_property name="ElementShortName">ao_vox_idx[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ao_vox_idx[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/ao_param_idx" type="array">
+      <obj_property name="ElementShortName">ao_param_idx[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ao_param_idx[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/ao_sample_idx" type="array">
+      <obj_property name="ElementShortName">ao_sample_idx[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ao_sample_idx[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache_addr" type="array">
+      <obj_property name="ElementShortName">il_cache_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">il_cache_addr[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/ilc_frac_part" type="array">
+      <obj_property name="ElementShortName">ilc_frac_part[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ilc_frac_part[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/bs_i_read_next_sample" type="logic">
+      <obj_property name="ElementShortName">bs_i_read_next_sample</obj_property>
+      <obj_property name="ObjectShortName">bs_i_read_next_sample</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/bs_o_dropout_mask" type="array">
+      <obj_property name="ElementShortName">bs_o_dropout_mask[127:0]</obj_property>
+      <obj_property name="ObjectShortName">bs_o_dropout_mask[127:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/bs_o_dropout_mask_vld" type="logic">
+      <obj_property name="ElementShortName">bs_o_dropout_mask_vld</obj_property>
+      <obj_property name="ObjectShortName">bs_o_dropout_mask_vld</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/bs_o_ctrl_is_full" type="logic">
+      <obj_property name="ElementShortName">bs_o_ctrl_is_full</obj_property>
+      <obj_property name="ObjectShortName">bs_o_ctrl_is_full</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/bs_o_ctrl_is_empty" type="logic">
+      <obj_property name="ElementShortName">bs_o_ctrl_is_empty</obj_property>
+      <obj_property name="ObjectShortName">bs_o_ctrl_is_empty</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/pl_i_bypass_dropout" type="logic">
+      <obj_property name="ElementShortName">pl_i_bypass_dropout</obj_property>
+      <obj_property name="ObjectShortName">pl_i_bypass_dropout</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/pl_i_bypass_relu" type="logic">
+      <obj_property name="ElementShortName">pl_i_bypass_relu</obj_property>
+      <obj_property name="ObjectShortName">pl_i_bypass_relu</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/pl_i_param_idx" type="array">
+      <obj_property name="ElementShortName">pl_i_param_idx[16:0]</obj_property>
+      <obj_property name="ObjectShortName">pl_i_param_idx[16:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/pl_i_data_tag" type="logic">
+      <obj_property name="ElementShortName">pl_i_data_tag</obj_property>
+      <obj_property name="ObjectShortName">pl_i_data_tag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/pl_o_data_tag" type="logic">
+      <obj_property name="ElementShortName">pl_o_data_tag</obj_property>
+      <obj_property name="ObjectShortName">pl_o_data_tag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/pl_i_data" type="array">
+      <obj_property name="ElementShortName">pl_i_data[0:127][15:0]</obj_property>
+      <obj_property name="ObjectShortName">pl_i_data[0:127][15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/pl_i_data_vld" type="logic">
+      <obj_property name="ElementShortName">pl_i_data_vld</obj_property>
+      <obj_property name="ObjectShortName">pl_i_data_vld</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/pl_o_data" type="array">
+      <obj_property name="ElementShortName">pl_o_data[0:31][15:0]</obj_property>
+      <obj_property name="ObjectShortName">pl_o_data[0:31][15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/pl_o_data_vld_partial" type="array">
+      <obj_property name="ElementShortName">pl_o_data_vld_partial[0:31]</obj_property>
+      <obj_property name="ObjectShortName">pl_o_data_vld_partial[0:31]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_EvalSynthData_32lanes/pl_o_data_vld_all" type="logic">
+      <obj_property name="ElementShortName">pl_o_data_vld_all</obj_property>
+      <obj_property name="ObjectShortName">pl_o_data_vld_all</obj_property>
+   </wvobject>
+   <wvobject fp_name="group8142" type="group">
+      <obj_property name="label">IL Cache [0:15]</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache[0]" type="array">
+         <obj_property name="ElementShortName">[0][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[0][0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache[1]" type="array">
+         <obj_property name="ElementShortName">[1][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[1][0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache[2]" type="array">
+         <obj_property name="ElementShortName">[2][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[2][0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache[3]" type="array">
+         <obj_property name="ElementShortName">[3][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[3][0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache[4]" type="array">
+         <obj_property name="ElementShortName">[4][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[4][0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache[5]" type="array">
+         <obj_property name="ElementShortName">[5][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[5][0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache[6]" type="array">
+         <obj_property name="ElementShortName">[6][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[6][0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache[7]" type="array">
+         <obj_property name="ElementShortName">[7][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[7][0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache[8]" type="array">
+         <obj_property name="ElementShortName">[8][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[8][0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache[9]" type="array">
+         <obj_property name="ElementShortName">[9][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[9][0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache[10]" type="array">
+         <obj_property name="ElementShortName">[10][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[10][0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache[11]" type="array">
+         <obj_property name="ElementShortName">[11][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[11][0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache[12]" type="array">
+         <obj_property name="ElementShortName">[12][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[12][0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache[13]" type="array">
+         <obj_property name="ElementShortName">[13][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[13][0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache[14]" type="array">
+         <obj_property name="ElementShortName">[14][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[14][0:127][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_EvalSynthData_32lanes/il_cache[15]" type="array">
+         <obj_property name="ElementShortName">[15][0:127][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[15][0:127][15:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

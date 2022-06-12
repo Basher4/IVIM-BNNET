@@ -1,5 +1,5 @@
 """
-This file trains a batch of network on simulated inputs with different SNRs.
+This file trains a batch of bayes networks on simulated inputs with different SNRs.
 During training, 256 samples are taken to hopefully represent the underlying distribution well enough.
 """
 
