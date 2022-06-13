@@ -32,6 +32,7 @@ BAYES_SAMPLES = 128
 arg = hp_example_1()
 arg = deep.checkarg(arg)
 net_params = deep_bayes.net_params()
+arg.train_pars.batch_size = 
 
 def sim_data(snr, bvals):
     path = f"./sw/data/signals/example_data_synth_snr{snr}.pickle.gz"
