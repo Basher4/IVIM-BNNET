@@ -33,7 +33,6 @@ INPUT_PATHS = [
 OUTPUT_PATH_TEMPLATE = "./sw/models/bnn_e13_ds{ds}_{rep}"
 
 arg = hp_example_1()
-arg = deep.checkarg(arg)
 arg.fit.do_fid = False
 net_params = deep_bayes.net_params()
 

@@ -1,3 +1,5 @@
+import gzip
+import pickle
 import nibabel as nib
 import numpy as np
 
@@ -23,3 +25,8 @@ def load_invivo_data(data_path, bv_path):
     res = [i for i, val in enumerate(datatot != datatot) if not val.any()] # Remove NaN data
 
     return bvalues, datatot[res]
+
+def load_infer_signals(snr) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    with gzip.open(f"./sw//data/signals/infer_{snr}SNR.pickle.gz", "rb") as fd:
+        obj = pickle.load(fd)
+    return obj

@@ -15,6 +15,7 @@ joblib
 """
 
 # import libraries
+from tqdm import tqdm
 import numpy as np
 import IVIMNET.deep as deep
 import IVIMNET.fitting_algorithms as fit

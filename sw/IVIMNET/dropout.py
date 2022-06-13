@@ -1,3 +1,6 @@
+# This implementation of Bernoulli dropout was provided Hongxiang Fan.
+
+
 import torch.nn.functional as F
 import torch
 from torch.autograd import Variable
