@@ -12,7 +12,6 @@ import sys
 import time
 import torch
 
-from sw.IVIMNET.simulations import sim_signal
 
 sys.path.append('./')
 sys.path.append('./sw/')
