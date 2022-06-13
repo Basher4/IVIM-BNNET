@@ -64,7 +64,7 @@ if len(train_signals_5[0]) > len(datatot):
     train_signals_5 = train_signals_5[0][np.random.choice(len(train_signals_5[0]), size=len(datatot), replace=False)]
 if len(train_signals_50[0]) > len(datatot):
     train_signals_50 = train_signals_50[0][np.random.choice(len(train_signals_50[0]), size=len(datatot), replace=False)]
-X_train = np.concatenate((datatot, train_signals_5[0], train_signals_50[0]), axis=0)
+X_train = np.concatenate((datatot, train_signals_5, train_signals_50), axis=0)
 time_start = time.perf_counter()
 net, epoch, final_val_loss = deep_bayes.learn_IVIM(X_train, bvalues, arg, net_params=net_params, stats_out=True, bayes_samples=BAYES_SAMPLES)
 time_end = time.perf_counter()
