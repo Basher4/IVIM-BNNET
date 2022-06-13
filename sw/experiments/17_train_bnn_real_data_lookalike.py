@@ -33,10 +33,10 @@ arg = deep.checkarg(arg)
 net_params = deep_bayes.net_params()
 
 def sim_data(snr, bvals):
-    path = f"./data/signals/example_data_synth_snr{snr}.pickle.gz"
+    path = f"./sw/data/signals/example_data_synth_snr{snr}.pickle.gz"
     if os.path.exists(path):
         print("Loading cached simulation data with SNR", snr)
-        with gzip.open(path, "wb") as fd:
+        with gzip.open(path, "rb") as fd:
             return pickle.load(fd)
 
     print("Simulating data for SNR", snr)
