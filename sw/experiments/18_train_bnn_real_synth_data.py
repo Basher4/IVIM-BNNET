@@ -27,7 +27,7 @@ DATA_PATH = "./sw/data/example_data/data.nii.gz"
 BVAL_PATH = "./sw/data/example_data/bvalues.bval"
 model_path = "./sw/models/bnn_e18.pt"
 info_path = "./sw/models/bnn_e18.json"
-BAYES_SAMPLES = 256
+BAYES_SAMPLES = 128
 
 arg = hp_example_1()
 arg = deep.checkarg(arg)
