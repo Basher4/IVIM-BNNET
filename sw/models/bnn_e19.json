@@ -1,0 +1,18 @@
+{
+    "signal_path": "./sw/data/signals/train_[5, 15, 20, 30, 50]SNR.pickle.gz",
+    "model_path": "./sw/models/bnn_e19.pt",
+    "snr": [
+        5,
+        15,
+        20,
+        30,
+        50
+    ],
+    "bayes_training_samples": 256,
+    "num_bvalues": 11,
+    "dorpout_p": 0.1,
+    "activation_fn": "relu",
+    "epochs": 327,
+    "final_val_loss": 0.008110666323117301,
+    "training_time": 5765.601614551619
+}

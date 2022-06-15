@@ -1,0 +1,12 @@
+{
+    "signal_path": "./sw/data/invivo_data/ds1.nii",
+    "model_path": "./sw/models/bnn_e13_ds1_2",
+    "snr": -1,
+    "bayes_training_samples": 256,
+    "num_bvalues": 78,
+    "dorpout_p": 0.1,
+    "activation_fn": "relu",
+    "epochs": 133,
+    "final_val_loss": 0.1473194807767868,
+    "training_time": 1929.4769468195736
+}
