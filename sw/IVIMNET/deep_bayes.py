@@ -1,5 +1,6 @@
 from tqdm import tqdm
 from typing import Optional
+from tqdm import tqdm
 from collections import namedtuple
 from dataclasses import dataclass
 import numpy as np
@@ -228,7 +229,7 @@ def learn_IVIM(X_train, bvalues, arg, epochs=1000, net_params=net_params(), stat
         return net, epoch, best
     return net
 
-def predict_IVIM(data, bvalues, net, arg, signals_out=False):
+def predict_IVIM(data, bvalues, net, arg, signals_out=False, batch_size=256):
     arg = deep.checkarg(arg)
 
     ## normalise the signal to b=0 and remove data with nans
@@ -254,12 +255,12 @@ def predict_IVIM(data, bvalues, net, arg, signals_out=False):
 
     # initialise dataloader. Batch size can be way larger as we are still training.
     inferloader = utils.DataLoader(torch.from_numpy(data.astype(np.float32)),
-                                   batch_size=2056,
+                                   batch_size=batch_size,
                                    shuffle=False,
                                    drop_last=False)
     # start predicting
     with torch.no_grad():
-        for i, X_batch in enumerate(inferloader, 0):
+        for i, X_batch in tqdm(enumerate(inferloader, 0)):
             X_batch = X_batch.to(arg.train_pars.device)
             # here the signal is predicted. Note that we now are interested in the parameters and no longer in the predicted signal decay.
             Xt, Dtt, Fpt, Dpt, S0t = net(X_batch)
