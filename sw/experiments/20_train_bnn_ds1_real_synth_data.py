@@ -23,8 +23,8 @@ import IVIMNET.deep as deep
 import IVIMNET.deep_bayes as deep_bayes
 import IVIMNET.fitting_algorithms as fit
 
-DATA_PATH = "./sw/data/invido_data/ds1.nii"
-BVAL_PATH = "./sw/data/invido_data/ds1.bval"
+DATA_PATH = "./sw/data/invivo_data/ds1.nii"
+BVAL_PATH = "./sw/data/invivo_data/ds1.bval"
 model_path = "./sw/models/bnn_e20.pt"
 info_path = "./sw/models/bnn_e20.json"
 BAYES_SAMPLES = 256
