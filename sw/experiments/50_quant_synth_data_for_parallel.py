@@ -15,9 +15,9 @@ import torch
 
 sys.path.append('./sw/')
 
-NEURAL_NETWORK_PATH = "./sw/models/bnn_e01_SNR5_0.pt"
+NEURAL_NETWORK_PATH = "./sw/models/bnn_e01_SNR20_0.pt"
 MEM_FILE_PATH = "./mem_files/for_testbench/fully_parallel"
-INPUT_SIGNALS_PATH = "./sw/data/signals/infer_5SNR.pickle.gz"
+INPUT_SIGNALS_PATH = "./sw/data/signals/infer_20SNR.pickle.gz"
 ACCELERATOR_NUM_LANES = 11
 accelerator_perceptrons = [[] for _ in range(ACCELERATOR_NUM_LANES)]
 TOTAL_BITS = 16
@@ -119,5 +119,6 @@ with open(f"{MEM_FILE_PATH}/din.mem", "w") as fd:
         pdata = [FixedPoint(bv, True, best_int_bits, TOTAL_BITS - best_int_bits) for bv in voxel]
         fd.write(" ".join(f"{elem:0{4}x}" for elem in pdata))
         if PAD_WITH_ZEROS:
+            fd.write(" ")
             fd.write(" ".join("0" for _ in range(128 - len(pdata))))
         fd.write(f"    // bv0 = {pdata[0]:0{4}x}\n")
