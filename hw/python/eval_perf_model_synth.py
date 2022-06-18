@@ -23,13 +23,13 @@ def load_memfile(path, signed, m, n):
         lines = fd.readlines()
     
     res = []
-    for line in lines:
+    for line in tqdm(lines):
         row = []
         for num_candidate in line.split():
             if num_candidate == '//' or num_candidate.startswith('//'):
                 break
             
-            row.append(float(FixedPoint(f"0x{num_candidate}", signed, m, n, overflow=OVERFLOW)))
+            row.append(FixedPoint(f"0x{num_candidate}", signed, m, n, overflow=OVERFLOW))
         if len(row) > 0:
             res.append(row)
 
@@ -55,6 +55,7 @@ din = load_memfile(DIN_PATH, True, NUM_INT_BITS, NUM_FRAC_BITS)[:, :11]
 
 perc_params = [load_memfile(PERC_PATH.format(i), False, NUM_WIDTH*129, 0).reshape(-1) for i in range(11)]
 
+print("Computing data")
 pu = ProcessingUnit(perc_params, 32, 11)
 data = []
 for dd in tqdm(din):
@@ -64,17 +65,19 @@ for dd in tqdm(din):
     for par in res:
         arr = []
         for s in par:
-            arr.append((float(s)))
-        vox.append(np.mean(arr))
+            arr.append(s)
+        vox.append(arr)
     data.append(vox)
 
 data = np.array(data)
 print(data.shape)
 
-with open("synth_eval.pickle", "wb") as fd:
+with open("synth_eval_fixed.pickle", "wb") as fd:
     pickle.dump(data, fd)
 
 fig,ax = plt.subplots(1, 4)
 for i in range(4):
-    ax[i].imshow(data[:,i].reshape(100,100))
-plt.show()
+    for x in range(data.shape[0]):
+        data[x,i] = float(data[x,i])
+    ax[i].imshow(data[:,i].astype(float).reshape(100,100))
+plt.savefig("plot.png")
