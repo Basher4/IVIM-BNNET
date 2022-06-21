@@ -1,3 +1,4 @@
+import os
 from fixedpoint import FixedPoint
 from tqdm import tqdm
 import matplotlib.pyplot as plt
@@ -11,9 +12,12 @@ sys.path.append('./hw/python/perf_model')
 from perf_model.config import *
 from perf_model.ProcessingUnit import ProcessingUnit
 
-MEM_FOLDER = "./mem_files/for_testbench/fully_parallel"
+MEM_FOLDER = "./mem_files/for_testbench/fully_parallel_16_3"
 DIN_PATH = f"{MEM_FOLDER}/din.mem"
 PERC_PATH = f"{MEM_FOLDER}/perc_{{}}_params.mem"
+
+RANGE_FRAC = int(sys.argv[1]) if len(sys.argv) >= 2 else 1
+RANGE_TOTAL = int(sys.argv[2]) if len(sys.argv) >= 2 else 1
 
 def sigmoid(x):
     return 1.0/(1.0+np.exp(-x))
@@ -58,7 +62,11 @@ perc_params = [load_memfile(PERC_PATH.format(i), False, NUM_WIDTH*129, 0).reshap
 print("Computing data")
 pu = ProcessingUnit(perc_params, 32, 11)
 data = []
-for dd in tqdm(din):
+li = len(din) * (RANGE_FRAC-1) // RANGE_TOTAL
+hi = len(din) * RANGE_FRAC // RANGE_TOTAL
+
+print(len(din), "Evaluating elements from", li, "to", hi)
+for dd in tqdm(din[li:hi]):
     res = pu.calculate(dd)
     vox = []
 
