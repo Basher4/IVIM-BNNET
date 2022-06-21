@@ -17,6 +17,6 @@ class Perceptron:
 
     def calculate(self, input:np.ndarray, pidx):
         bias, weights = self._pp[pidx]
-        dotprod: FixedPoint = (input @ weights) + (bias << NUM_FRAC_BITS)
+        dotprod: FixedPoint = (input @ weights) + bias.resize(NUM_INT_BITS, NUM_FRAC_BITS)
         dotprod.resize(NUM_INT_BITS, NUM_FRAC_BITS, alert="ignore", overflow=OVERFLOW)
         return dotprod
