@@ -12,7 +12,7 @@ import numpy as np
 import nibabel as nib
 import pickle
 import sys
-import torch
+import torch, torch.quantization
 
 sys.path.append('./sw/')
 
@@ -25,33 +25,57 @@ accelerator_perceptrons = [[] for _ in range(ACCELERATOR_NUM_LANES)]
 TOTAL_BITS = 16
 MEMORY_WIDTH = 128 + 1
 PAD_WITH_ZEROS = True
+INT_BITS = 3
+PLOT = False
+
+try:
+    print(sys.argv)
+    MEM_FILE_PATH = sys.argv[1]
+    print("MEM_FILE_PATH", MEM_FILE_PATH)
+    INT_BITS = int(sys.argv[2])
+    print("INT_BITS", INT_BITS)
+    TOTAL_BITS = int(sys.argv[3])
+    print("TOTAL_BITS", TOTAL_BITS)
+    PLOT = bool(int(sys.argv[4]))
+    print("PLOT", PLOT)
+except:
+    print("Argument parsing done. Lol.")
 
 # Load neural network
 net: torch.nn.Module = torch.load(NEURAL_NETWORK_PATH, map_location="cpu")
+net.eval()
 network_parameters = dict(net.named_parameters())
 
 # Merge weights with Batch Normalization
-def merge_weights_with_bn(lin_w, lin_b, bn_w, bn_b):
-    w = lin_w * bn_w
-    b = bn_w * lin_b + bn_b
-    return w.detach(), b.detach()
+def merge_weights_with_bn(linear_layer, batch_norm):
+    coef = (batch_norm.weight)/torch.sqrt(batch_norm.running_var+batch_norm.eps)
+    w_ = coef * linear_layer.weight
+    b_ = coef * (linear_layer.bias - batch_norm.running_mean) + batch_norm.bias
+    print(coef.shape, w_.shape, b_.shape)
+    return w_.detach(), b_.detach()
 
 param_sum, param_count = 0, 0
 params_arr = []
 
+to_fuse = []
 for param_net in range(4):
     for offset in [0, 4]:
-        linear_layer: torch.nn.Linear = net.get_submodule(f"fc_layers.{param_net}.{offset}")
-        batch_norm: torch.nn.BatchNorm1d = net.get_submodule(f"fc_layers.{param_net}.{offset+2}")
+        to_fuse.append([f"fc_layers.{param_net}.{offset}", f"fc_layers.{param_net}.{offset+2}"])
+fnet = torch.ao.quantization.fuse_modules(net, to_fuse)
 
-        lin_w, lin_b = linear_layer.weight, linear_layer.bias
-        bn_w, bn_b = batch_norm.weight, batch_norm.bias
-        for perc_idx in range(lin_w.shape[0]):
-            # w, b = merge_weights_with_bn(lin_w[perc_idx], lin_b[perc_idx], bn_w[perc_idx], bn_b[perc_idx])
-            w, b = lin_w[perc_idx].detach(), lin_b[perc_idx].detach()
-            accelerator_perceptrons[perc_idx % ACCELERATOR_NUM_LANES].append(torch.concat((b.unsqueeze(dim=0),w)))
-            params_arr.append(w.numpy())
-            params_arr.append(b.numpy().reshape(1))
+for param_net in range(4):
+    for offset in [0, 4]:
+        linear_layer: torch.nn.Linear = fnet.get_submodule(f"fc_layers.{param_net}.{offset}")
+        w, b = linear_layer.weight, linear_layer.bias
+
+        for perc_idx in range(b.shape[0]):
+            val = torch.concat((b[perc_idx].unsqueeze(dim=0),w[perc_idx]))
+            print(".", end="")
+
+            accelerator_perceptrons[perc_idx % ACCELERATOR_NUM_LANES].append(val)
+            # Sanity check
+            params_arr.append(w.T[perc_idx].numpy())
+            params_arr.append(b[perc_idx].numpy().reshape(1))
 
     encoder_layer: torch.nn.Linear = net.get_submodule(f"encoder.{param_net}.8")
     for i in range(ACCELERATOR_NUM_LANES):
@@ -61,8 +85,8 @@ params_arr = np.concatenate(params_arr)
 
 # Find the best quantization
 print(f"Every perceptron ({ACCELERATOR_NUM_LANES} in total) requires memory {len(accelerator_perceptrons[0])} deep")
-print(f"Parameter stats:"
-print(f"\tCount = {len(params_arr)}\n\tMean  = {np.mean(params_arr)}"
+print(f"Parameter stats:")
+print(f"\tCount = {len(params_arr)}\n\tMean  = {np.mean(params_arr)}")
 print(f"\tMedian= {np.median(params_arr)}\n\tStdev = {np.std(params_arr)}\n")
 
 ### load patient data

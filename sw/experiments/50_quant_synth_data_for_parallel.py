@@ -8,48 +8,73 @@ from fixedpoint import FixedPoint
 import gzip
 import itertools
 import json
+import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 import sys
-import torch
+import torch, torch.quantization
 
 sys.path.append('./sw/')
 
 NEURAL_NETWORK_PATH = "./sw/models/bnn_e01_SNR20_0.pt"
-MEM_FILE_PATH = "./mem_files/for_testbench/fully_parallel"
+MEM_FILE_PATH = "./mem_files/for_testbench/fully_parallel_16_3"
 INPUT_SIGNALS_PATH = "./sw/data/signals/infer_20SNR.pickle.gz"
 ACCELERATOR_NUM_LANES = 11
 accelerator_perceptrons = [[] for _ in range(ACCELERATOR_NUM_LANES)]
 TOTAL_BITS = 16
 MEMORY_WIDTH = 128 + 1
 PAD_WITH_ZEROS = True
+INT_BITS = 3
+PLOT = False
+
+try:
+    print(sys.argv)
+    MEM_FILE_PATH = sys.argv[1]
+    print("MEM_FILE_PATH", MEM_FILE_PATH)
+    INT_BITS = int(sys.argv[2])
+    print("INT_BITS", INT_BITS)
+    TOTAL_BITS = int(sys.argv[3])
+    print("TOTAL_BITS", TOTAL_BITS)
+    PLOT = bool(int(sys.argv[4]))
+    print("PLOT", PLOT)
+except:
+    print("Argument parsing done. Lol.")
 
 # Load neural network
 net: torch.nn.Module = torch.load(NEURAL_NETWORK_PATH, map_location="cpu")
+net.eval()
 network_parameters = dict(net.named_parameters())
 
 # Merge weights with Batch Normalization
-def merge_weights_with_bn(lin_w, lin_b, bn_w, bn_b):
-    w = lin_w * bn_w
-    b = bn_w * lin_b + bn_b
-    return w.detach(), b.detach()
+def merge_weights_with_bn(linear_layer, batch_norm):
+    coef = (batch_norm.weight)/torch.sqrt(batch_norm.running_var+batch_norm.eps)
+    w_ = coef * linear_layer.weight
+    b_ = coef * (linear_layer.bias - batch_norm.running_mean) + batch_norm.bias
+    print(coef.shape, w_.shape, b_.shape)
+    return w_.detach(), b_.detach()
 
 param_sum, param_count = 0, 0
 params_arr = []
 
+to_fuse = []
 for param_net in range(4):
     for offset in [0, 4]:
-        linear_layer: torch.nn.Linear = net.get_submodule(f"fc_layers.{param_net}.{offset}")
-        batch_norm: torch.nn.BatchNorm1d = net.get_submodule(f"fc_layers.{param_net}.{offset+2}")
+        to_fuse.append([f"fc_layers.{param_net}.{offset}", f"fc_layers.{param_net}.{offset+2}"])
+fnet = torch.ao.quantization.fuse_modules(net, to_fuse)
 
-        lin_w, lin_b = linear_layer.weight, linear_layer.bias
-        bn_w, bn_b = batch_norm.weight, batch_norm.bias
-        for perc_idx in range(lin_w.shape[0]):
-            # w, b = merge_weights_with_bn(lin_w[perc_idx], lin_b[perc_idx], bn_w[perc_idx], bn_b[perc_idx])
-            w, b = lin_w[perc_idx].detach(), lin_b[perc_idx].detach()
-            accelerator_perceptrons[perc_idx % ACCELERATOR_NUM_LANES].append(torch.concat((b.unsqueeze(dim=0),w)))
-            params_arr.append(w.numpy())
-            params_arr.append(b.numpy().reshape(1))
+for param_net in range(4):
+    for offset in [0, 4]:
+        linear_layer: torch.nn.Linear = fnet.get_submodule(f"fc_layers.{param_net}.{offset}")
+        w, b = linear_layer.weight, linear_layer.bias
+
+        for perc_idx in range(b.shape[0]):
+            val = torch.concat((b[perc_idx].unsqueeze(dim=0),w[perc_idx]))
+            print(".", end="")
+
+            accelerator_perceptrons[perc_idx % ACCELERATOR_NUM_LANES].append(val)
+            # Sanity check
+            params_arr.append(w.T[perc_idx].numpy())
+            params_arr.append(b[perc_idx].numpy().reshape(1))
 
     encoder_layer: torch.nn.Linear = net.get_submodule(f"encoder.{param_net}.8")
     for i in range(ACCELERATOR_NUM_LANES):
@@ -64,49 +89,67 @@ print(f"Parameter stats:\n\tCount = {len(params_arr)}\n\tMean  = {np.mean(params
 with gzip.open(INPUT_SIGNALS_PATH) as fd:
     input_data = pickle.load(fd)
 
-# best_int_bits = 0
-# best_rmse = 9999
-# for int_bits in range(1, TOTAL_BITS):
-#     error = 0
-#     rmse = 0
-#     denom = 0
+best_int_bits = INT_BITS or 0
+if PLOT:
+    rmses = []
+    best_rmse = 9999
+    for int_bits in range(1, TOTAL_BITS+1):
+        error = 0
+        rmse = 0
+        denom = 0
 
-#     # Error from weights and biases.
-#     for ps in itertools.chain.from_iterable(accelerator_perceptrons):
-#         for we in ps:
-#             err = we - float(FixedPoint(float(we), True, int_bits, TOTAL_BITS - int_bits))
-#             error += err * err
-#         denom += ps.shape[0]
+        # Error from weights and biases.
+        for ps in itertools.chain.from_iterable(accelerator_perceptrons):
+            for we in ps:
+                err = we - float(FixedPoint(float(we), True, int_bits, TOTAL_BITS - int_bits, overflow="clamp", overflow_alert="ignore"))
+                error += err * err
+            denom += ps.shape[0]
 
-#     # Error from input signal
-#     signal_noisy = input_data[0]
-#     for vox in signal_noisy:
-#         for bv in vox:
-#             err = we - float(FixedPoint(float(we), True, int_bits, TOTAL_BITS - int_bits))
-#             error += err * err
-#     denom += signal_noisy.shape[0] * signal_noisy.shape[1]
+        # Error from input signal
+        signal_noisy = input_data[0]
+        for vox in signal_noisy:
+            for bv in vox:
+                err = we - float(FixedPoint(float(we), True, int_bits, TOTAL_BITS - int_bits, overflow="clamp", overflow_alert="ignore"))
+                error += err * err
+        denom += signal_noisy.shape[0] * signal_noisy.shape[1]
 
-#     error /= denom
-#     rmse = torch.sqrt(error)
+        error /= denom
+        rmse = torch.sqrt(error)
 
-#     print(f"INT_BITS = {int_bits} , RMSE = {rmse}")
+        print(f"INT_BITS = {int_bits} , RMSE = {rmse}")
+        rmses.append(rmse.detach().numpy())
 
-#     if rmse < best_rmse:
-#         best_rmse = rmse
-#         best_int_bits = int_bits
-best_int_bits = 3
+        if rmse < best_rmse:
+            best_rmse = rmse
+            best_int_bits = int_bits
+
+    plt.plot(np.arange(TOTAL_BITS)+1, rmses, label="RMSE")
+    plt.scatter(best_int_bits, rmses[best_int_bits-1], label="Lowest error", c="red")
+    plt.ylabel("RMSE")
+    plt.xlabel("Integer bits")
+    plt.xticks(list(range(2,TOTAL_BITS+1, 2)))
+    plt.title(f"Quantisation error for {TOTAL_BITS}-bit fixed point numbers")
+    plt.savefig(f"./sw/plots/quant_error_{TOTAL_BITS}.png")
+    plt.legend(loc="upper center")
+    plt.show()
 
 # Output memory files for perceptrons
 for pi, pd in enumerate(accelerator_perceptrons):
     with open(f"{MEM_FILE_PATH}/perc_{pi}_params.mem", "w") as fd:
         fd.write(f"// INT_BITS = {best_int_bits}\n")
         for si, sd in enumerate(pd):
-            pdata = [FixedPoint(val, True, best_int_bits, TOTAL_BITS - best_int_bits) for val in sd]
+            pdata = [FixedPoint(val, True, best_int_bits, TOTAL_BITS - best_int_bits, overflow="clamp", overflow_alert="ignore") for val in sd]
+            outfp = FixedPoint(0, False, MEMORY_WIDTH * TOTAL_BITS, 0)
+            for p in pdata:
+                outfp = (outfp | p) << TOTAL_BITS
+            outfp = outfp >> TOTAL_BITS
+
             if PAD_WITH_ZEROS:
                 while len(pdata) < MEMORY_WIDTH:
-                    pdata.append(FixedPoint(0, True, best_int_bits, TOTAL_BITS - best_int_bits))
+                    pdata.append(FixedPoint(0, True, best_int_bits, TOTAL_BITS - best_int_bits, overflow="clamp", overflow_alert="ignore"))
+                    outfp = outfp << TOTAL_BITS
 
-            fd.write("".join(f"{elem:0{4}x}" for elem in pdata))
+            fd.write(f"{outfp.bits:0{(MEMORY_WIDTH*TOTAL_BITS+3)//4}x}")
             fd.write(f"    // bias = {pdata[0]:0{4}x}, w[0] = {pdata[1]:0{4}x}, w[{len(sd)-2}] = {pdata[len(sd)-1]:0{4}x}")
             fd.write('\n')
 
@@ -116,8 +159,12 @@ with open(f"{MEM_FILE_PATH}/din.mem", "w") as fd:
     fd.write(f"// INT_BITS = {best_int_bits}, {len(input_data[0])} elements\n")
     
     for voxel in input_data[0]:
-        pdata = [FixedPoint(bv, True, best_int_bits, TOTAL_BITS - best_int_bits) for bv in voxel]
-        fd.write(" ".join(f"{elem:0{4}x}" for elem in pdata))
+        pdata = [FixedPoint(bv, True, best_int_bits, TOTAL_BITS - best_int_bits, overflow="clamp", overflow_alert="ignore") for bv in voxel]
+        # outfp = FixedPoint(0, False, MEMORY_WIDTH * TOTAL_BITS, 0)
+        # for p in pdata:
+        #     outfp = (outfp | p) << TOTAL_BITS
+
+        fd.write(" ".join(f"{elem:0x}" for elem in pdata))
         if PAD_WITH_ZEROS:
             fd.write(" ")
             fd.write(" ".join("0" for _ in range(128 - len(pdata))))
