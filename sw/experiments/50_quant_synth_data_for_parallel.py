@@ -65,7 +65,7 @@ fnet = torch.ao.quantization.fuse_modules(net, to_fuse)
 for param_net in range(4):
     for offset in [0, 4]:
         linear_layer: torch.nn.Linear = fnet.get_submodule(f"fc_layers.{param_net}.{offset}")
-        w, b = linear_layer.weight, linear_layer.bias
+        w, b = linear_layer.weight.detach(), linear_layer.bias.detach()
 
         for perc_idx in range(b.shape[0]):
             val = torch.concat((b[perc_idx].unsqueeze(dim=0),w[perc_idx]))
@@ -73,7 +73,7 @@ for param_net in range(4):
 
             accelerator_perceptrons[perc_idx % ACCELERATOR_NUM_LANES].append(val)
             # Sanity check
-            params_arr.append(w.T[perc_idx].numpy())
+            params_arr.append(w[perc_idx].numpy())
             params_arr.append(b[perc_idx].numpy().reshape(1))
 
     encoder_layer: torch.nn.Linear = net.get_submodule(f"encoder.{param_net}.8")
@@ -101,31 +101,30 @@ if PLOT:
         # Error from weights and biases.
         for ps in itertools.chain.from_iterable(accelerator_perceptrons):
             for we in ps:
-                err = we - float(FixedPoint(float(we), True, int_bits, TOTAL_BITS - int_bits, overflow="clamp", overflow_alert="ignore"))
-                error += err * err
+                err = (we - float(FixedPoint(float(we), True, int_bits, TOTAL_BITS - int_bits, overflow="clamp", overflow_alert="ignore"))) / we
+                error += err * err if we != 0 else 0
             denom += ps.shape[0]
 
         # Error from input signal
         signal_noisy = input_data[0]
         for vox in signal_noisy:
             for bv in vox:
-                err = we - float(FixedPoint(float(we), True, int_bits, TOTAL_BITS - int_bits, overflow="clamp", overflow_alert="ignore"))
-                error += err * err
+                err = (we - float(FixedPoint(float(we), True, int_bits, TOTAL_BITS - int_bits, overflow="clamp", overflow_alert="ignore"))) / we
+                error += err * err if we != 0 else 0
         denom += signal_noisy.shape[0] * signal_noisy.shape[1]
 
         error /= denom
         rmse = torch.sqrt(error)
 
-        print(f"INT_BITS = {int_bits} , RMSE = {rmse}")
+        print(f"INT_BITS = {int_bits} , NRMSE = {rmse}")
         rmses.append(rmse.detach().numpy())
 
         if rmse < best_rmse:
             best_rmse = rmse
             best_int_bits = int_bits
 
-    plt.plot(np.arange(TOTAL_BITS)+1, rmses, label="RMSE")
+    plt.plot(np.arange(TOTAL_BITS)+1, rmses, label="NRMSE")
     plt.scatter(best_int_bits, rmses[best_int_bits-1], label="Lowest error", c="red")
-    plt.ylabel("RMSE")
     plt.xlabel("Integer bits")
     plt.xticks(list(range(2,TOTAL_BITS+1, 2)))
     plt.title(f"Quantisation error for {TOTAL_BITS}-bit fixed point numbers")
